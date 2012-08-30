@@ -1,0 +1,25 @@
+# kscope files
+*.*~
+
+# CMake temporary files
+*.cmake
+CMakeFiles
+CMakeCache.txt
+Makefile
+
+# Binaries
+source/virt-dashboard
+
+# deb building files
+bin/deb/
+build-stamp
+configure-stamp
+debian/files
+debian/simscreen.debhelper.log
+debian/simscreen.substvars
+debian/simscreen/
+install_manifest.txt
+*.1
+
+# logs
+bin/debug.txt
