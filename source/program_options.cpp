@@ -1,14 +1,12 @@
-#include <string>
-#include <iostream>
+#include "program_options.h"
 
 #include <boost/program_options/options_description.hpp>
-#include <boost/program_options/variables_map.hpp>
 #include <boost/program_options/parsers.hpp>
 
 using namespace std;
 namespace po = boost::program_options;
 
-int main(int argc, char* argv[])
+ProgramOptions::ProgramOptions(int argc, char* argv[])
 {
     po::options_description description("Allowed options");
     description.add_options()
@@ -17,20 +15,22 @@ int main(int argc, char* argv[])
         ("port,p", po::value<int>(), "UDP connection port")
         ("rs,r", po::value<int>(), "RS-485 connection address");
 
-    po::variables_map variables;
     po::store(po::parse_command_line(argc, argv, description),
-              variables);
+              options_);
+}
 
-    if (variables.count("help"))
-    {
-        cout << description << "\n";
-        return 1;
-    }
+string ProgramOptions::GetString(string option_name)
+{
+    if ( options_.count(option_name) == 0 )
+        return string();
 
-    if (variables.count("ip"))
-        cout << "UDP connection IP was set to " << variables["ip"].as<string>() << ".\n";
-    else
-        cout << "UDP connection IP was not set.\n";
+    return options_[option_name].as<string>();
+}
 
-    return 0;
+int ProgramOptions::GetInt(string option_name)
+{
+    if ( options_.count(option_name) == 0 )
+        return 0;
+
+    return options_[option_name].as<int>();
 }

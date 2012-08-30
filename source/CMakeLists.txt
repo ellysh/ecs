@@ -3,7 +3,8 @@ include_directories(${COMMON_INCLUDE_DIRS})
 link_directories(${COMMON_LIBDIR})
 
 set(virt-dashboard_SRCS
-    virt-dashboard.cpp)
+    virt-dashboard.cpp
+    program_options.cpp)
 
 add_executable(virt-dashboard ${virt-dashboard_SRCS})
 
