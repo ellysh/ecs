@@ -7,12 +7,6 @@ using namespace virt_dashboard;
 
 namespace po = boost::program_options;
 
-static const string kHelp = "help";
-static const string kIpLocal = "ipl";
-static const string kIpRemote = "ipr";
-static const string kPort = "port";
-static const string kRsAddress = "rs";
-
 static const int kErrorValue = -1;
 
 ProgramOptions::ProgramOptions(int argc, char* argv[])

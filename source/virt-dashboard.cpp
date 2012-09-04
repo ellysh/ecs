@@ -2,6 +2,7 @@
 #include <iostream>
 
 #include "program_options.h"
+#include "udp_connection.h"
 
 using namespace std;
 using namespace virt_dashboard;
@@ -17,6 +18,12 @@ int main(int argc, char* argv[])
         cout << options.GetDescription() << "\n";
         return 1;
     }
+
+    UdpConnection connection;
+    connection.SetLocalPoint(options.GetString(kIpLocal),
+                             options.GetInt(kPort));
+    connection.SetRemotePoint(options.GetString(kIpRemote),
+                              options.GetInt(kPort));
 
     return 0;
 }

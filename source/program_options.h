@@ -11,6 +11,12 @@ namespace po = boost::program_options;
 namespace virt_dashboard
 {
 
+static const std::string kHelp = "help";
+static const std::string kIpLocal = "ipl";
+static const std::string kIpRemote = "ipr";
+static const std::string kPort = "port";
+static const std::string kRsAddress = "rs";
+
 class ProgramOptions
 {
 public:
