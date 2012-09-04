@@ -8,7 +8,8 @@ using namespace virt_dashboard;
 namespace po = boost::program_options;
 
 static const string kHelp = "help";
-static const string kIp = "ip";
+static const string kIpLocal = "ipl";
+static const string kIpRemote = "ipr";
 static const string kPort = "port";
 static const string kRsAddress = "rs";
 
@@ -19,7 +20,8 @@ ProgramOptions::ProgramOptions(int argc, char* argv[])
     description_ = new po::options_description("Allowed options");
     description_->add_options()
         (kHelp.c_str(), "produce help message")
-        (kIp.c_str(), po::value<string>(), "UDP connection IP address")
+        (kIpLocal.c_str(), po::value<string>(), "UDP connection local IP address")
+        (kIpRemote.c_str(), po::value<string>(), "UDP connection remote IP address")
         (kPort.c_str(), po::value<int>(), "UDP connection port")
         (kRsAddress.c_str(), po::value<int>(), "RS-485 connection address");
 
@@ -53,7 +55,10 @@ bool ProgramOptions::IsComplete()
     if ( ! GetString(kHelp).empty() )
         return false;
 
-    if ( GetString(kIp).empty() )
+    if ( GetString(kIpLocal).empty() )
+        return false;
+
+    if ( GetString(kIpRemote).empty() )
         return false;
 
     if ( GetInt(kPort) == kErrorValue )
