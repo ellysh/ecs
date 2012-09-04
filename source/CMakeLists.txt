@@ -4,7 +4,8 @@ link_directories(${COMMON_LIBDIR})
 
 set(virt-dashboard_SRCS
     virt-dashboard.cpp
-    program_options.cpp)
+    program_options.cpp
+    udp_connection.cpp)
 
 add_executable(virt-dashboard ${virt-dashboard_SRCS})
 
