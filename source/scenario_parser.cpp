@@ -22,7 +22,7 @@ Byte StringToByte(string& input)
     return result;
 }
 
-ByteArray ArrayFromString(string input, size_t start, size_t end)
+ByteArray StringToArray(string input, size_t start, size_t end)
 {
     if ( input.size() < end )
         return ByteArray();
@@ -50,13 +50,18 @@ ByteArray ParseRequest(string request)
     size_t start = 1;
     size_t end = request.find("]");
 
-    return ArrayFromString(request, start, end);
+    return StringToArray(request, start, end);
 }
 
 ByteArray ParseAnswer(string answer)
 {
-    /* FIXME: Implement this method */
-    return ByteArray();
+    if ( answer.empty() )
+        return ByteArray();
+
+    size_t start = answer.find_last_of("[");
+    size_t end = answer.find_last_of("]");
+
+    return StringToArray(answer, start, end);
 }
 
 void ScenarioParser::ParseFile(string& filename)
