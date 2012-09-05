@@ -18,13 +18,25 @@ def PrintUsage():
     sys.exit(1)
 
 def ParseLine(line):
-    line.find('send')
+    start = line.rfind('[')
+    end = line.rfind(']')
+    return "[" + line[start+5:end+1]
 
 def ParseFile(filename):
     file = open(filename)
     content = file.readlines()
+
+    rule = ""
+    counter = 0
     for line in content:
-        ParseLine(line)
+        if counter == 0:
+            rule = ParseLine(line) + " "
+            counter = 1
+        elif counter == 1:
+            rule += ParseLine(line)
+            print rule
+            counter = 0
+
     file.close()
 
 def main():
