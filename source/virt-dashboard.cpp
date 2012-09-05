@@ -32,7 +32,12 @@ int main(int argc, char* argv[])
 
     while( true )
     {
+        usleep(1);
+
         request = connection.ReceiveData();
+
+        if ( request.empty() )
+            continue;
 
         connection.SendData(parser.GetAnswer(request));
     }

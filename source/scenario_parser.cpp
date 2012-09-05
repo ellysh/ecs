@@ -83,5 +83,7 @@ void ScenarioParser::ParseFile(string& filename)
 ByteArray ScenarioParser::GetAnswer(ByteArray request)
 {
     /* FIXME: Implement this method */
+    cout << "ScenarioParser::GetAnswer" << endl;
+
     return ByteArray();
 }

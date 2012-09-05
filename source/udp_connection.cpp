@@ -75,7 +75,7 @@ void UdpConnection::SendData(ByteArray data)
     catch ( boost::system::system_error error )
     {
         is_connected_ = false;
-        cout << "UdpConnection::SendData() - error = " << error.code() << endl;
+        cout << "UdpConnection::SendData() - error = " << error.what() << " code = " << error.code() << endl;
     }
 }
 
