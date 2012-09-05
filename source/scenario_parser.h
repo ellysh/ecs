@@ -20,7 +20,7 @@ public:
     ByteArray GetAnswer(ByteArray request);
 
 private:
-    AnswerMap answes_;
+    AnswerMap answers_;
 
     void ParseFile(std::string& filename);
 };
