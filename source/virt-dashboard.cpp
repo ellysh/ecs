@@ -3,6 +3,7 @@
 
 #include "program_options.h"
 #include "udp_connection.h"
+#include "scenario_parser.h"
 
 using namespace std;
 using namespace virt_dashboard;
@@ -25,5 +26,6 @@ int main(int argc, char* argv[])
     connection.SetRemotePoint(options.GetString(kIpRemote),
                               options.GetInt(kPort));
 
+    ScenarioParser parser(options.GetString(kScenario));
     return 0;
 }
