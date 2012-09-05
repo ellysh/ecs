@@ -7,7 +7,7 @@
 using namespace std;
 using namespace virt_dashboard;
 
-const int UdpConnection::kInBufferLength = 1024;
+const int kInBufferLength = 1024;
 
 void UdpConnection::Connect()
 {
@@ -41,14 +41,16 @@ ByteArray UdpConnection::ReceiveData()
     if ( ! is_connected_ )
         return ByteArray();
 
-    ByteArray result;
-    result.reserve(kInBufferLength);
+    char buffer[kInBufferLength];
+    size_t bytes_transferred;
 
     try
     {
         /* FIXME: Try to use receive() nethod instead the receive_from() one */
         if ( socket_.available() != 0 )
-            socket_.receive_from(boost::asio::buffer(result, kInBufferLength), remote_point_);
+            bytes_transferred = socket_.receive_from(
+                                    boost::asio::buffer(buffer, kInBufferLength),
+                                    remote_point_);
     }
     catch ( boost::system::system_error error )
     {
@@ -56,7 +58,13 @@ ByteArray UdpConnection::ReceiveData()
         return ByteArray();
     }
 
-    //cout << "UdpConnection::ReceiveAnswer() - buffer = " << buffer << endl;
+    if ( bytes_transferred > kInBufferLength )
+        return ByteArray();
+
+    ByteArray result;
+
+    for ( int i = 0; i < bytes_transferred; i++ )
+        result.push_back(buffer[i]);
 
     return result;
 }

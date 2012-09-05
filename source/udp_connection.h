@@ -22,8 +22,6 @@ public:
     void SendData(ByteArray data);
 
 private:
-    static const int kInBufferLength;
-
     boost::asio::io_service io_service_;
     boost::asio::ip::udp::socket socket_;
     boost::asio::ip::udp::endpoint remote_point_;
