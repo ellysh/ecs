@@ -10,6 +10,9 @@ using namespace virt_dashboard;
 
 namespace po = boost::program_options;
 
+static const int kReceiveDelay = 1;
+static const int kAnswerDelay = 5 * 1000;
+
 int main(int argc, char* argv[])
 {
     ProgramOptions options(argc, argv);
@@ -32,13 +35,13 @@ int main(int argc, char* argv[])
 
     while( true )
     {
-        usleep(1);
-
+        usleep(kReceiveDelay);
         request = connection.ReceiveData();
 
         if ( request.empty() )
             continue;
 
+        usleep(kAnswerDelay);
         connection.SendData(parser.GetAnswer(request));
     }
 
