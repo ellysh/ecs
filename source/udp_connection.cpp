@@ -81,6 +81,9 @@ void UdpConnection::SendData(ByteArray data)
     if ( ! is_connected_ )
         return;
 
+    if ( data.empty() )
+        return;
+
     try
     {
         socket_.send_to(boost::asio::buffer(data), remote_point_);

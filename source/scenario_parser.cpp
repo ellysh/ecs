@@ -1,5 +1,7 @@
 #include "scenario_parser.h"
 
+#include <stdlib.h>
+
 #include <fstream>
 #include <iostream>
 #include <sstream>
@@ -82,11 +84,11 @@ void ScenarioParser::ParseFile(string& filename)
 
 ByteArray ScenarioParser::GetAnswer(ByteArray request)
 {
-    /* FIXME: Implement this method */
-    cout << "ScenarioParser::GetAnswer" << endl;
+    if ( answers_.empty() )
+        exit(0);
 
-    ByteArray result;
-    result.push_back(255);
-
-    return result;
+    if ( answers_.front().first == request )
+        return answers_.front().second;
+    else
+        return ByteArray();
 }
