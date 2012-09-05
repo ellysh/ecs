@@ -25,7 +25,7 @@ endif(NOT CMAKE_BUILD_TYPE)
 message(STATUS "Build type: " ${CMAKE_BUILD_TYPE})
 
 # Find Linux packages
-find_package(Boost 1.42 COMPONENTS system regex program_options REQUIRED)
+find_package(Boost 1.40 COMPONENTS system regex program_options REQUIRED)
 
 # Linux paths and libs
 set(COMMON_LIBDIR )
