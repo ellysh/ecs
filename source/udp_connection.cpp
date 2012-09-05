@@ -34,6 +34,19 @@ void UdpConnection::Connect()
     }
 }
 
+ByteArray ArrayToVector(char* array, int size)
+{
+    if ( size > kInBufferLength )
+        return ByteArray();
+
+    ByteArray result;
+
+    for ( int i = 0; i < size; i++ )
+        result.push_back(array[i]);
+
+    return result;
+}
+
 ByteArray UdpConnection::ReceiveData()
 {
     Connect();
@@ -58,15 +71,7 @@ ByteArray UdpConnection::ReceiveData()
         return ByteArray();
     }
 
-    if ( bytes_transferred > kInBufferLength )
-        return ByteArray();
-
-    ByteArray result;
-
-    for ( int i = 0; i < bytes_transferred; i++ )
-        result.push_back(buffer[i]);
-
-    return result;
+    return ArrayToVector(buffer, bytes_transferred);
 }
 
 void UdpConnection::SendData(ByteArray data)
@@ -78,7 +83,7 @@ void UdpConnection::SendData(ByteArray data)
 
     try
     {
-        socket_.send(boost::asio::buffer(data));
+        socket_.send_to(boost::asio::buffer(data), remote_point_);
     }
     catch ( boost::system::system_error error )
     {
