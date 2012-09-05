@@ -1,5 +1,6 @@
 #include "program_options.h"
 
+#include <iostream>
 #include <boost/program_options/parsers.hpp>
 
 using namespace std;
@@ -17,10 +18,19 @@ ProgramOptions::ProgramOptions(int argc, char* argv[])
         (kIpLocal.c_str(), po::value<string>(), "UDP connection local IP address")
         (kIpRemote.c_str(), po::value<string>(), "UDP connection remote IP address")
         (kPort.c_str(), po::value<int>(), "UDP connection port")
-        (kRsAddress.c_str(), po::value<int>(), "RS-485 connection address");
+        (kRsAddress.c_str(), po::value<int>(), "RS-485 connection address")
+        (kScenario.c_str(), po::value<string>(), "scenario file");
 
-    po::store(po::parse_command_line(argc, argv, *description_),
-              options_);
+    try
+    {
+        po::store(po::parse_command_line(argc, argv, *description_),
+                  options_);
+    }
+    catch(...)
+    {
+        cout << GetDescription() << "\n";
+        exit(1);
+    }
 }
 
 ProgramOptions::~ProgramOptions()
@@ -46,6 +56,7 @@ int ProgramOptions::GetInt(string option_name)
 
 bool ProgramOptions::IsComplete()
 {
+    /* FIXME: Refactoring this method */
     if ( ! GetString(kHelp).empty() )
         return false;
 
@@ -53,6 +64,9 @@ bool ProgramOptions::IsComplete()
         return false;
 
     if ( GetString(kIpRemote).empty() )
+        return false;
+
+    if ( GetString(kScenario).empty() )
         return false;
 
     if ( GetInt(kPort) == kErrorValue )
