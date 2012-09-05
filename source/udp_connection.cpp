@@ -46,6 +46,7 @@ ByteArray UdpConnection::ReceiveData()
 
     try
     {
+        /* FIXME: Try to use receive() nethod instead the receive_from() one */
         if ( socket_.available() != 0 )
             socket_.receive_from(boost::asio::buffer(result, kInBufferLength), remote_point_);
     }
@@ -62,7 +63,20 @@ ByteArray UdpConnection::ReceiveData()
 
 void UdpConnection::SendData(ByteArray data)
 {
-    /* FIXME: Implement this method */
+    Connect();
+
+    if ( ! is_connected_ )
+        return;
+
+    try
+    {
+        socket_.send(boost::asio::buffer(data));
+    }
+    catch ( boost::system::system_error error )
+    {
+        is_connected_ = false;
+        cout << "UdpConnection::SendData() - error = " << error.code() << endl;
+    }
 }
 
 void UdpConnection::SetLocalPoint(string address, int port)
