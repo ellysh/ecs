@@ -1,1 +1,1 @@
-/home/elly/Projects/virt-dashboard/scripts/log-to-vdc.py
+../scripts/log-to-vdc.py
