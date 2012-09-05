@@ -29,6 +29,8 @@ private:
     bool is_connected_;
 
     void SendRequest(std::string request);
+
+    /* FIXME: Use the ByteArray instead the string container */
     std::string ReceiveAnswer();
     void Connect();
 };
