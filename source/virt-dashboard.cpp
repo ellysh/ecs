@@ -27,5 +27,15 @@ int main(int argc, char* argv[])
                               options.GetInt(kPort));
 
     ScenarioParser parser(options.GetString(kScenario));
+
+    ByteArray request;
+
+    while( true )
+    {
+        request = connection.ReceiveData();
+
+        connection.SendData(parser.GetAnswer(request));
+    }
+
     return 0;
 }

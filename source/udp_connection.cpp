@@ -7,7 +7,7 @@
 using namespace std;
 using namespace virt_dashboard;
 
-const int UdpConnection::kInBufferLength = 165536;
+const int UdpConnection::kInBufferLength = 1024;
 
 void UdpConnection::Connect()
 {
@@ -34,34 +34,35 @@ void UdpConnection::Connect()
     }
 }
 
-void UdpConnection::GetData()
-{
-    string answer = ReceiveAnswer();
-}
-
-string UdpConnection::ReceiveAnswer()
+ByteArray UdpConnection::ReceiveData()
 {
     Connect();
 
     if ( ! is_connected_ )
-        return string();
+        return ByteArray();
 
-    char buffer[kInBufferLength];
+    ByteArray result;
+    result.reserve(kInBufferLength);
 
     try
     {
         if ( socket_.available() != 0 )
-            socket_.receive_from(boost::asio::buffer(buffer, kInBufferLength), remote_point_);
+            socket_.receive_from(boost::asio::buffer(result, kInBufferLength), remote_point_);
     }
     catch ( boost::system::system_error error )
     {
         is_connected_ = false;
-        return string();
+        return ByteArray();
     }
 
     //cout << "UdpConnection::ReceiveAnswer() - buffer = " << buffer << endl;
 
-    return string(buffer);
+    return result;
+}
+
+void UdpConnection::SendData(ByteArray data)
+{
+    /* FIXME: Implement this method */
 }
 
 void UdpConnection::SetLocalPoint(string address, int port)

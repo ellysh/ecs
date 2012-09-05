@@ -4,6 +4,8 @@
 #include <string>
 #include <boost/asio.hpp>
 
+#include "types_virt_dashboard.h"
+
 namespace virt_dashboard
 {
 
@@ -16,7 +18,8 @@ public:
     void SetLocalPoint(std::string address, int port);
     void SetRemotePoint(std::string address, int port);
 
-    void GetData();
+    ByteArray ReceiveData();
+    void SendData(ByteArray data);
 
 private:
     static const int kInBufferLength;
@@ -28,10 +31,6 @@ private:
 
     bool is_connected_;
 
-    void SendRequest(std::string request);
-
-    /* FIXME: Use the ByteArray instead the string container */
-    std::string ReceiveAnswer();
     void Connect();
 };
 
