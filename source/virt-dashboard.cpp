@@ -4,6 +4,7 @@
 #include "program_options.h"
 #include "udp_connection.h"
 #include "scenario_parser.h"
+#include "functions_vdb.h"
 
 using namespace std;
 using namespace virt_dashboard;
@@ -32,6 +33,7 @@ int main(int argc, char* argv[])
     ScenarioParser parser(options.GetString(kScenario));
 
     ByteArray request;
+    ByteArray answer;
 
     while( true )
     {
@@ -41,8 +43,16 @@ int main(int argc, char* argv[])
         if ( request.empty() )
             continue;
 
+        cout << "request = ";
+        PrintByteArray(request);
+
         usleep(kAnswerDelay);
-        connection.SendData(parser.GetAnswer(request));
+        answer = parser.GetAnswer(request);
+
+        cout << "answer = ";
+        PrintByteArray(answer);
+
+        connection.SendData(answer);
     }
 
     return 0;

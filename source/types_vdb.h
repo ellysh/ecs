@@ -1,5 +1,5 @@
-#ifndef TYPES_VIRT_DASHBOARD_H
-#define TYPES_VIRT_DASHBOARD_H
+#ifndef TYPES_VDB_H
+#define TYPES_VDB_H
 
 #include <vector>
 

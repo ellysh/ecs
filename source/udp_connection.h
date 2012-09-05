@@ -4,7 +4,7 @@
 #include <string>
 #include <boost/asio.hpp>
 
-#include "types_virt_dashboard.h"
+#include "types_vdb.h"
 
 namespace virt_dashboard
 {
