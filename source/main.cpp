@@ -2,17 +2,10 @@
 #include <iostream>
 
 #include "program_options.h"
-#include "udp_connection.h"
-#include "scenario_parser.h"
-#include "functions_vdb.h"
+#include "virtual_controller.h"
 
 using namespace std;
 using namespace virt_dashboard;
-
-namespace po = boost::program_options;
-
-static const int kReceiveDelay = 2 * 1000;
-static const int kAnswerDelay = 1;
 
 int main(int argc, char* argv[])
 {
@@ -24,37 +17,9 @@ int main(int argc, char* argv[])
         return 1;
     }
 
-    UdpConnection connection;
-    connection.SetLocalPoint(options.GetString(kIpLocal),
-                             options.GetInt(kPortLocal));
-    connection.SetRemotePoint(options.GetString(kIpRemote),
-                              options.GetInt(kPortRemote));
+    VirtualController controller(options);
 
-    ScenarioParser parser(options.GetString(kScenario));
-
-    ByteArray request;
-    ByteArray answer;
-
-    while( true )
-    {
-        usleep(kReceiveDelay);
-        request = connection.ReceiveData();
-
-        if ( request.empty() )
-            continue;
-
-        cout << "main()" << endl;
-        cout << "\trequest = ";
-        PrintByteArray(request);
-
-        usleep(kAnswerDelay);
-        answer = parser.GetAnswer(request);
-
-        cout << "\tanswer = ";
-        PrintByteArray(answer);
-
-        connection.SendData(answer);
-    }
+    controller.Start();
 
     return 0;
 }
