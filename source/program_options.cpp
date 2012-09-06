@@ -3,6 +3,8 @@
 #include <iostream>
 #include <boost/program_options/parsers.hpp>
 
+#include "scenario_conclusion.h"
+
 using namespace std;
 using namespace virt_dashboard;
 
@@ -30,7 +32,7 @@ ProgramOptions::ProgramOptions(int argc, char* argv[])
     catch(...)
     {
         cout << GetDescription() << "\n";
-        exit(1);
+        ScenarioConclusion::Exit();
     }
 }
 

@@ -6,6 +6,7 @@ set(virt-controller_SRCS
     main.cpp
     functions_vdb.cpp
     program_options.cpp
+    scenario_conclusion.cpp
     scenario_parser.cpp
     udp_connection.cpp
     virtual_controller.cpp)

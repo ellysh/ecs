@@ -7,6 +7,7 @@
 #include <sstream>
 
 #include "functions_vdb.h"
+#include "scenario_conclusion.h"
 
 using namespace std;
 using namespace virt_dashboard;
@@ -97,7 +98,7 @@ void ScenarioParser::ParseFile(string& filename)
 ByteArray ScenarioParser::GetAnswer(ByteArray request)
 {
     if ( answers_.empty() )
-        exit(0);
+        ScenarioConclusion::ExitSuccess();
 
     if ( request == kServiceRequest )
         return kServiceAnswer;
