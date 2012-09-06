@@ -32,7 +32,7 @@ set(COMMON_LIBDIR )
 set(COMMON_INCLUDE_DIRS ${Boost_INCLUDE_DIR})
 
 # CXXFLAGS and CMAKE_C_FLAGS
-set(CMAKE_CXX_FLAGS "-D__LINUX__ -Wvla -Wl,-z,defs -fPIC")
+set(CMAKE_CXX_FLAGS "-D__LINUX__ -Wvla -Wl,-z,defs -fPIC -std=c++0x")
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} -O2 -fomit-frame-pointer -funroll-loops -pipe")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} -D__DEBUG__ -O0 -g")
 set(CMAKE_C_FLAGS ${CMAKE_CXX_FLAGS_RELEASE})
