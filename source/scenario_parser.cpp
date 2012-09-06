@@ -81,6 +81,12 @@ void ScenarioParser::ParseFile(string& filename)
     string line;
     while ( getline(file, line) )
     {
+        if ( line.empty() )
+            continue;
+
+        if ( line[0] == '#' )
+            continue;
+
         request = ParseRequest(line);
         answer = ParseAnswer(line);
 
