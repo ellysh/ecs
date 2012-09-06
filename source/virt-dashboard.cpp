@@ -11,8 +11,8 @@ using namespace virt_dashboard;
 
 namespace po = boost::program_options;
 
-static const int kReceiveDelay = 1000;
-static const int kAnswerDelay = 3 * 1000;
+static const int kReceiveDelay = 2 * 1000;
+static const int kAnswerDelay = 1;
 
 int main(int argc, char* argv[])
 {
