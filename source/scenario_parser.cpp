@@ -6,6 +6,8 @@
 #include <iostream>
 #include <sstream>
 
+#include "functions_vdb.h"
+
 using namespace std;
 using namespace virt_dashboard;
 
@@ -60,7 +62,7 @@ ByteArray ParseAnswer(string answer)
     if ( answer.empty() )
         return ByteArray();
 
-    size_t start = answer.find_last_of("[");
+    size_t start = answer.find_last_of("[") + 1;
     size_t end = answer.find_last_of("]");
 
     return StringToArray(answer, start, end);
@@ -78,7 +80,7 @@ void ScenarioParser::ParseFile(string& filename)
         request = ParseRequest(line);
         answer = ParseAnswer(line);
 
-        answers_.push_front(pair<ByteArray,ByteArray>(request, answer));
+        answers_.push_back(pair<ByteArray,ByteArray>(request, answer));
     }
 }
 

@@ -43,13 +43,14 @@ int main(int argc, char* argv[])
         if ( request.empty() )
             continue;
 
-        cout << "request = ";
+        cout << "main()" << endl;
+        cout << "\trequest = ";
         PrintByteArray(request);
 
         usleep(kAnswerDelay);
         answer = parser.GetAnswer(request);
 
-        cout << "answer = ";
+        cout << "\tanswer = ";
         PrintByteArray(answer);
 
         connection.SendData(answer);
