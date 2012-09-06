@@ -8,7 +8,7 @@ CMakeCache.txt
 Makefile
 
 # Binaries
-source/virt-dashboard
+source/virt-controller
 
 # deb building files
 bin/deb/
