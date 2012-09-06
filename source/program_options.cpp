@@ -17,7 +17,8 @@ ProgramOptions::ProgramOptions(int argc, char* argv[])
         (kHelp.c_str(), "produce help message")
         (kIpLocal.c_str(), po::value<string>(), "UDP connection local IP address")
         (kIpRemote.c_str(), po::value<string>(), "UDP connection remote IP address")
-        (kPort.c_str(), po::value<int>(), "UDP connection port")
+        (kPortLocal.c_str(), po::value<int>(), "UDP connection local port")
+        (kPortRemote.c_str(), po::value<int>(), "UDP connection remote port")
         (kRsAddress.c_str(), po::value<int>(), "RS-485 connection address")
         (kScenario.c_str(), po::value<string>(), "scenario file");
 
@@ -56,7 +57,7 @@ int ProgramOptions::GetInt(string option_name)
 
 bool ProgramOptions::IsComplete()
 {
-    /* FIXME: Refactoring this method */
+    /* FIXME: Refactoring this method with MACROS */
     if ( ! GetString(kHelp).empty() )
         return false;
 
@@ -69,7 +70,10 @@ bool ProgramOptions::IsComplete()
     if ( GetString(kScenario).empty() )
         return false;
 
-    if ( GetInt(kPort) == kErrorValue )
+    if ( GetInt(kPortLocal) == kErrorValue )
+        return false;
+
+    if ( GetInt(kPortRemote) == kErrorValue )
         return false;
 
     if ( GetInt(kRsAddress) == kErrorValue )

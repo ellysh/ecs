@@ -29,7 +29,7 @@ void UdpConnection::Connect()
         }
         catch (exception& ex)
         {
-            cout << "UdpConnection - error = " << ex.what() << endl;
+            cout << "UdpConnection::Connect() - error = " << ex.what() << endl;
         }
     }
 }

@@ -26,9 +26,9 @@ int main(int argc, char* argv[])
 
     UdpConnection connection;
     connection.SetLocalPoint(options.GetString(kIpLocal),
-                             options.GetInt(kPort));
+                             options.GetInt(kPortLocal));
     connection.SetRemotePoint(options.GetString(kIpRemote),
-                              options.GetInt(kPort));
+                              options.GetInt(kPortRemote));
 
     ScenarioParser parser(options.GetString(kScenario));
 
