@@ -4,12 +4,13 @@
 #include <string>
 #include <list>
 
+#include "scenario_parser.h"
 #include "types_vdb.h"
 
 namespace virt_dashboard
 {
 
-class UsoParser
+class UsoParser : public ScenarioParser
 {
 private:
     typedef std::list< std::pair<ByteArray, int> > RequestMap;
@@ -22,10 +23,11 @@ public:
     int GetDelay();
     void NextRequest();
 
+protected:
+    virtual void ParseFileLine(std::string& line);
+
 private:
     RequestMap requests_;
-
-    void ParseFile(std::string& filename);
 };
 
 }
