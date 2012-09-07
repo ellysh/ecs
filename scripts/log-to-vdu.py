@@ -36,7 +36,13 @@ def GetTime(line):
     return int(line[start+1:end])
 
 def ParseDelay(line, next):
-    return GetTime(next) - GetTime(line)
+
+    if GetTime(next) > GetTime(line):
+        return GetTime(next) - GetTime(line)
+    else:
+        return 1000 + GetTime(next) - GetTime(line)
+
+
 
 def ParseFile(filename):
     file = open(filename)
