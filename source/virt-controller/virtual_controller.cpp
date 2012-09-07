@@ -4,7 +4,7 @@
 
 #include "program_options.h"
 #include "udp_connection.h"
-#include "scenario_parser.h"
+#include "controller_parser.h"
 #include "functions_vdb.h"
 
 using namespace std;
@@ -21,7 +21,7 @@ void VirtualController::Start()
     connection.SetRemotePoint(options_.GetString(kIpRemote),
                               options_.GetInt(kPortRemote));
 
-    ScenarioParser parser(options_.GetString(kScenario));
+    ControllerParser parser(options_.GetString(kScenario));
 
     ByteArray request;
     ByteArray answer;
