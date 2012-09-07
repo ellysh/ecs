@@ -58,15 +58,17 @@ ByteArray ParseRequest(string request)
     return StringToArray(request, start, end);
 }
 
-ByteArray ParseAnswer(string answer)
+int ParseDelay(string delay)
 {
-    if ( answer.empty() )
-        return ByteArray();
+    if ( delay.empty() )
+        return 0;
 
-    size_t start = answer.find_last_of("[") + 1;
-    size_t end = answer.find_last_of("]");
+    size_t start = delay.find_last_of("[") + 1;
+    size_t end = delay.size();
 
-    return StringToArray(answer, start, end);
+    cout << "ParseDelay() - substr = " << delay.substr(start, end) << endl;
+
+    return 0;
 }
 
 void ScenarioParser::ParseFile(string& filename)
@@ -74,7 +76,7 @@ void ScenarioParser::ParseFile(string& filename)
     ifstream file(filename.c_str());
 
     ByteArray request;
-    ByteArray answer;
+    int delay;
     string line;
     while ( getline(file, line) )
     {
@@ -85,9 +87,9 @@ void ScenarioParser::ParseFile(string& filename)
             continue;
 
         request = ParseRequest(line);
-        answer = ParseAnswer(line);
+        delay = ParseDelay(line);
 
-        answers_.push_back(pair<ByteArray,ByteArray>(request, answer));
+        requests_.push_back(pair<ByteArray,int>(request, delay));
     }
 }
 

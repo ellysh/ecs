@@ -12,7 +12,7 @@ namespace virt_dashboard
 class ScenarioParser
 {
 private:
-    typedef std::list< std::pair<ByteArray, ByteArray> > AnswerMap;
+    typedef std::list< std::pair<ByteArray, int> > RequestMap;
 
 public:
     ScenarioParser(std::string filename);
@@ -22,7 +22,7 @@ public:
     void NextRequest();
 
 private:
-    AnswerMap answers_;
+    RequestMap requests_;
 
     void ParseFile(std::string& filename);
 };
