@@ -29,9 +29,14 @@ void VirtualUso::Start()
         if ( request.empty() )
             continue;
 
+        cout << "main()" << endl;
+        cout << "\trequest = ";
+        PrintByteArray(request);
+
         connection.SendData(request);
 
-        usleep(parser.GetDelay());
+        cout << "\tdelay = " << dec << parser.GetDelay() << endl;
+        usleep(parser.GetDelay() * 1000);
 
         parser.NextRequest();
     }

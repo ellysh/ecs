@@ -97,17 +97,18 @@ void ScenarioParser::ParseFile(string& filename)
 
 ByteArray ScenarioParser::GetRequest()
 {
-    /* FIXME: Implement this method */
-    return ByteArray();
+    if ( requests_.empty() )
+        ScenarioConclusion::ExitSuccess();
+
+    return requests_.front().first;
 }
 
 int ScenarioParser::GetDelay()
 {
-    /* FIXME: Implement this method */
-    return 0;
+    return requests_.front().second;
 }
 
 void ScenarioParser::NextRequest()
 {
-    /* FIXME: Implement this method */
+    requests_.pop_front();
 }
