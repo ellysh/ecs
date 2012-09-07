@@ -16,7 +16,7 @@ using namespace virt_dashboard;
 static const ByteArray kServiceRequest = { 0x31, 0x72, 0x21 };
 static const ByteArray kServiceAnswer = { 0x31, 0x72, 0x21, 0x00, 0x00, 0x00, 0x00 };
 
-ControllerParser::ControllerParser(string filename)
+ControllerParser::ControllerParser(std::string filename)
 {
     ParseFile(filename);
 }

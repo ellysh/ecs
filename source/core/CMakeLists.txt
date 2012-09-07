@@ -5,6 +5,7 @@ set(vdb_core_LIB_SRCS
     functions_vdb.cpp
     program_options.cpp
     scenario_conclusion.cpp
+    scenario_parser.cpp
     udp_connection.cpp)
 
 add_library(vdb_core SHARED ${vdb_core_LIB_SRCS})

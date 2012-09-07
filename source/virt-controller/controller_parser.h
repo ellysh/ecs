@@ -4,25 +4,28 @@
 #include <string>
 #include <list>
 
+#include "scenario_parser.h"
 #include "types_vdb.h"
 
 namespace virt_dashboard
 {
 
-class ControllerParser
+class ControllerParser : public ScenarioParser
 {
 private:
     typedef std::list< std::pair<ByteArray, ByteArray> > AnswerMap;
 
 public:
     ControllerParser(std::string filename);
+    virtual ~ControllerParser() {}
 
     ByteArray GetAnswer(ByteArray request);
 
+protected:
+    virtual void ParseFile(std::string& filename);
+
 private:
     AnswerMap answers_;
-
-    void ParseFile(std::string& filename);
 };
 
 }
