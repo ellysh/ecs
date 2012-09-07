@@ -4,7 +4,7 @@ link_directories(${COMMON_LIBDIR})
 
 set(virt-uso_SRCS
     main.cpp
-    scenario_parser.cpp
+    uso_parser.cpp
     virtual_uso.cpp)
 
 add_executable(virt-uso ${virt-uso_SRCS})

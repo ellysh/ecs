@@ -1,4 +1,4 @@
-#include "scenario_parser.h"
+#include "uso_parser.h"
 
 #include <stdlib.h>
 
@@ -14,7 +14,7 @@
 using namespace std;
 using namespace virt_dashboard;
 
-ScenarioParser::ScenarioParser(string filename)
+UsoParser::UsoParser(string filename)
 {
     ParseFile(filename);
 }
@@ -73,7 +73,7 @@ int ParseDelay(string delay)
     return boost::lexical_cast<int>(result);
 }
 
-void ScenarioParser::ParseFile(string& filename)
+void UsoParser::ParseFile(string& filename)
 {
     ifstream file(filename.c_str());
 
@@ -95,7 +95,7 @@ void ScenarioParser::ParseFile(string& filename)
     }
 }
 
-ByteArray ScenarioParser::GetRequest()
+ByteArray UsoParser::GetRequest()
 {
     if ( requests_.empty() )
         ScenarioConclusion::ExitSuccess();
@@ -103,12 +103,12 @@ ByteArray ScenarioParser::GetRequest()
     return requests_.front().first;
 }
 
-int ScenarioParser::GetDelay()
+int UsoParser::GetDelay()
 {
     return requests_.front().second;
 }
 
-void ScenarioParser::NextRequest()
+void UsoParser::NextRequest()
 {
     requests_.pop_front();
 }

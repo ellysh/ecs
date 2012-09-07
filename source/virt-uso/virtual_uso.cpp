@@ -4,7 +4,7 @@
 
 #include "program_options.h"
 #include "udp_connection.h"
-#include "scenario_parser.h"
+#include "uso_parser.h"
 #include "functions_vdb.h"
 
 using namespace std;
@@ -18,7 +18,7 @@ void VirtualUso::Start()
     connection.SetRemotePoint(options_.GetString(kIpRemote),
                               options_.GetInt(kPortRemote));
 
-    ScenarioParser parser(options_.GetString(kScenario));
+    UsoParser parser(options_.GetString(kScenario));
 
     ByteArray request;
 
