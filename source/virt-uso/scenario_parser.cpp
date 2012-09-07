@@ -6,6 +6,8 @@
 #include <iostream>
 #include <sstream>
 
+#include <boost/lexical_cast.hpp>
+
 #include "functions_vdb.h"
 #include "scenario_conclusion.h"
 
@@ -63,12 +65,12 @@ int ParseDelay(string delay)
     if ( delay.empty() )
         return 0;
 
-    size_t start = delay.find_last_of("[") + 1;
+    size_t start = delay.find("]") + 2;
     size_t end = delay.size();
 
-    cout << "ParseDelay() - substr = " << delay.substr(start, end) << endl;
+    string result(delay.substr(start, end));
 
-    return 0;
+    return boost::lexical_cast<int>(result);
 }
 
 void ScenarioParser::ParseFile(string& filename)
