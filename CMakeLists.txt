@@ -29,7 +29,9 @@ find_package(Boost 1.40 COMPONENTS system regex program_options REQUIRED)
 
 # Linux paths and libs
 set(COMMON_LIBDIR )
-set(COMMON_INCLUDE_DIRS ${Boost_INCLUDE_DIR})
+set(COMMON_INCLUDE_DIRS
+    ${Boost_INCLUDE_DIR}
+    ${PROJECT_SOURCE_DIR}/source/core)
 
 # CXXFLAGS and CMAKE_C_FLAGS
 set(CMAKE_CXX_FLAGS "-D__LINUX__ -Wvla -Wl,-z,defs -fPIC -std=c++0x")
