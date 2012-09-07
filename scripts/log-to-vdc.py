@@ -9,12 +9,12 @@ from the simunit bus log file
 
 import sys
 
-_USAGE = """
+USAGE = """
 Usage: log-to-vdc.py <file>
 """
 
 def PrintUsage():
-    sys.stderr.write(_USAGE)
+    sys.stderr.write(USAGE)
     sys.exit(1)
 
 def ParseLine(line):
