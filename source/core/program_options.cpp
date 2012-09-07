@@ -78,9 +78,6 @@ bool ProgramOptions::IsComplete()
     if ( GetInt(kPortRemote) == kErrorValue )
         return false;
 
-    if ( GetInt(kRsAddress) == kErrorValue )
-        return false;
-
     return true;
 }
 

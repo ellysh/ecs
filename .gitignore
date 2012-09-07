@@ -9,6 +9,8 @@ Makefile
 
 # Binaries
 source/virt-controller/virt-controller
+source/virt-uso/virt-uso
+source/core/libvdb_core.so
 
 # deb building files
 bin/deb/
