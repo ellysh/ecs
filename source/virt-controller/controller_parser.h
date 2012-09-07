@@ -22,7 +22,7 @@ public:
     ByteArray GetAnswer(ByteArray request);
 
 protected:
-    virtual void ParseFile(std::string& filename);
+    virtual void ParseFileLine(std::string& line);
 
 private:
     AnswerMap answers_;

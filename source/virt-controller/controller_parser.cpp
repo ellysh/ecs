@@ -2,7 +2,6 @@
 
 #include <stdlib.h>
 
-#include <fstream>
 #include <iostream>
 #include <sstream>
 
@@ -73,26 +72,12 @@ ByteArray ParseAnswer(string answer)
     return StringToArray(answer, start, end);
 }
 
-void ControllerParser::ParseFile(string& filename)
+void ControllerParser::ParseFileLine(string& line)
 {
-    ifstream file(filename.c_str());
+    ByteArray request(ParseRequest(line));
+    ByteArray answer(ParseAnswer(line));
 
-    ByteArray request;
-    ByteArray answer;
-    string line;
-    while ( getline(file, line) )
-    {
-        if ( line.empty() )
-            continue;
-
-        if ( line[0] == '#' )
-            continue;
-
-        request = ParseRequest(line);
-        answer = ParseAnswer(line);
-
-        answers_.push_back(pair<ByteArray,ByteArray>(request, answer));
-    }
+    answers_.push_back(pair<ByteArray,ByteArray>(request, answer));
 }
 
 ByteArray ControllerParser::GetAnswer(ByteArray request)

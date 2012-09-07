@@ -14,7 +14,9 @@ public:
     virtual ~ScenarioParser() {}
 
 protected:
-    virtual void ParseFile(std::string& filename) = 0;
+    virtual void ParseFileLine(std::string& line) = 0;
+
+    void ParseFile(std::string& filename);
 };
 
 }
