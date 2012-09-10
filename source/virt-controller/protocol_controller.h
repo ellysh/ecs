@@ -10,14 +10,18 @@ namespace virt_dashboard
 class ProtocolController
 {
 public:
-    ProtocolController(int rs_address, ControllerParser::AnswerMap& answers) :
-        rs_address_(rs_address), answers_(answers) {}
+    ProtocolController(int rs_address, ControllerParser::AnswerMap& answers);
 
     ByteArray GetAnswer(ByteArray request);
 
 private:
     int rs_address_;
     ControllerParser::AnswerMap answers_;
+
+    /* FIXME: Service request and answer are hack for current solution
+     * with A20 controller protocol */
+    ByteArray service_request_;
+    ByteArray service_answer_;
 };
 
 }
