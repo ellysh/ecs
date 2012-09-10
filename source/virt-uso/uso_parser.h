@@ -12,7 +12,7 @@ namespace virt_dashboard
 
 class UsoParser : public ScenarioParser
 {
-private:
+public:
     typedef std::list< std::pair<ByteArray, int> > RequestMap;
 
 public:

@@ -11,7 +11,7 @@ class ProtocolController
 {
 public:
     ProtocolController(int rs_address, ControllerParser::AnswerMap& answers) :
-        rs_address_(rs_address), answers_(answers) {};
+        rs_address_(rs_address), answers_(answers) {}
 
     ByteArray GetAnswer(ByteArray request);
 

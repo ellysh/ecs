@@ -4,6 +4,7 @@ link_directories(${COMMON_LIBDIR})
 
 set(virt-uso_SRCS
     main.cpp
+    protocol_uso.cpp
     uso_parser.cpp
     virtual_uso.cpp)
 
