@@ -14,7 +14,7 @@ class VirtualController
 {
 public:
     VirtualController(ProgramOptions& options);
-    ~VirtualController();
+    virtual ~VirtualController();
 
     void Start();
 

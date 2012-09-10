@@ -19,9 +19,7 @@ public:
     UsoParser(std::string filename);
     virtual ~UsoParser() {}
 
-    ByteArray GetRequest();
-    int GetDelay();
-    void NextRequest();
+    RequestMap& GetRequests();
 
 protected:
     virtual void ParseFileLine(std::string& line);

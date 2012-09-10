@@ -23,9 +23,9 @@ VirtualController::VirtualController(ProgramOptions& options) : options_(options
 void VirtualController::ConfigureConnection()
 {
     connection_.SetLocalPoint(options_.GetString(kIpLocal),
-                             options_.GetInt(kPortLocal));
+                              options_.GetInt(kPortLocal));
     connection_.SetRemotePoint(options_.GetString(kIpRemote),
-                              options_.GetInt(kPortRemote));
+                               options_.GetInt(kPortRemote));
 }
 
 void VirtualController::CreateProtocol()

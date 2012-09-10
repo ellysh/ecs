@@ -5,26 +5,46 @@
 #include "program_options.h"
 #include "udp_connection.h"
 #include "uso_parser.h"
+#include "protocol_uso.h"
 #include "functions_vdb.h"
 
 using namespace std;
 using namespace virt_dashboard;
 
-void VirtualUso::Start()
+VirtualUso::VirtualUso(ProgramOptions& options) : options_(options)
 {
-    UdpConnection connection;
-    connection.SetLocalPoint(options_.GetString(kIpLocal),
-                             options_.GetInt(kPortLocal));
-    connection.SetRemotePoint(options_.GetString(kIpRemote),
-                              options_.GetInt(kPortRemote));
+    ConfigureConnection();
 
+    CreateProtocol();
+}
+
+void VirtualUso::ConfigureConnection()
+{
+    connection_.SetLocalPoint(options_.GetString(kIpLocal),
+                              options_.GetInt(kPortLocal));
+    connection_.SetRemotePoint(options_.GetString(kIpRemote),
+                               options_.GetInt(kPortRemote));
+}
+
+void VirtualUso::CreateProtocol()
+{
     UsoParser parser(options_.GetString(kScenario));
 
+    protocol_ = new ProtocolUso(parser.GetRequests());
+}
+
+VirtualUso::~VirtualUso()
+{
+    delete protocol_;
+}
+
+void VirtualUso::Start()
+{
     ByteArray request;
 
     while( true )
     {
-        request = parser.GetRequest();
+        request = protocol_->GetRequest();
 
         if ( request.empty() )
             continue;
@@ -33,11 +53,11 @@ void VirtualUso::Start()
         cout << "\trequest = ";
         PrintByteArray(request);
 
-        connection.SendData(request);
+        connection_.SendData(request);
 
-        cout << "\tdelay = " << dec << parser.GetDelay() << endl;
-        usleep(parser.GetDelay() * 1000);
+        cout << "\tdelay = " << dec << protocol_->GetDelay() << endl;
+        usleep(protocol_->GetDelay() * 1000);
 
-        parser.NextRequest();
+        protocol_->NextRequest();
     }
 }
