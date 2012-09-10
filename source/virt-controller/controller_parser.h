@@ -12,7 +12,7 @@ namespace virt_dashboard
 
 class ControllerParser : public ScenarioParser
 {
-private:
+public:
     typedef std::list< std::pair<ByteArray, ByteArray> > AnswerMap;
 
 public:
