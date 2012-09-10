@@ -60,7 +60,7 @@ int ProgramOptions::GetInt(string option_name)
 bool ProgramOptions::IsComplete()
 {
     /* FIXME: Refactoring this method with MACROS */
-    if ( ! GetString(kHelp).empty() )
+    if ( options_.count(kHelp) != 0 )
         return false;
 
     if ( GetString(kIpLocal).empty() )
