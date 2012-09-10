@@ -24,4 +24,5 @@ install_manifest.txt
 *.1
 
 # logs
-bin/debug.txt
+bin/*.txt
+bin/*.log

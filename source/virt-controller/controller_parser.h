@@ -19,7 +19,7 @@ public:
     ControllerParser(std::string filename);
     virtual ~ControllerParser() {}
 
-    ByteArray GetAnswer(ByteArray request);
+    AnswerMap& GetAnswers();
 
 protected:
     virtual void ParseFileLine(std::string& line);
