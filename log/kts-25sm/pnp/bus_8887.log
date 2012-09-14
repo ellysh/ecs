@@ -1,0 +1,23 @@
+[01/01/09 01:30:23.976] log started
+[01/01/09 01:30:23.977] 	[ BusInterface ]
+[01/01/09 01:30:23.977] 	cycle = 100
+[01/01/09 01:30:23.977] 	href = cin_8887
+[01/01/09 01:30:23.977] 	interface = ethernet
+[01/01/09 01:30:23.977] 	localAddr = 0.0.0.0
+[01/01/09 01:30:23.977] 	localPort = 8887
+[01/01/09 01:30:23.977] 	log:path = 
+[01/01/09 01:30:23.977] 	log:size = 
+[01/01/09 01:30:23.977] 	log:type = 
+[01/01/09 01:30:23.977] 	name = TCP/UDP/UnixSocket Network Bus
+[01/01/09 01:30:23.977] 	protocol = tcp
+[01/01/09 01:30:23.977] 	stopDelay = 500
+[01/01/09 01:30:23.977] 	sym = bus_8887
+[01/01/09 01:30:23.977] 	type = ethernet
+[01/01/09 01:30:23.977] 	vendor = Spetstekhnika
+[01/01/09 01:30:23.977] tid = 4223
+[01/01/09 01:30:23.979] tcpServer(0.0.0.0:8887) 
+[01/01/09 01:30:23.981] tcp_connection started (receive size=10240)
+[01/01/09 01:30:23.984] tcp_connection started (receive size=10240)
+[01/01/09 01:32:26.734] error: bus thread interrupted
+[01/01/09 01:32:26.768] resources: ut=0.16 st=0.03
+[01/01/09 01:32:26.768] log finished

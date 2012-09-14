@@ -1,0 +1,112 @@
+[01/01/09 01:30:23.581] log started
+[01/01/09 01:30:23.581] 	[  ]
+[01/01/09 01:30:23.581] 	interface = simunit
+[01/01/09 01:30:23.582] 	log:path = 
+[01/01/09 01:30:23.582] 	log:size = 
+[01/01/09 01:30:23.582] 	log:type = 
+[01/01/09 01:30:23.582] 	name = Simunit
+[01/01/09 01:30:23.582] 	sym = simunit
+[01/01/09 01:30:23.582] 	vendor = Spectechnika
+[01/01/09 01:30:23.582] using boost 1_42
+[01/01/09 01:30:23.643] PluginsLoader::Load(): loading 26 plugins:
+[01/01/09 01:30:23.647] 	plugins/libst_motor.so        : ST Step Motor Codec                      (object, step-motor)
+[01/01/09 01:30:23.649] 	plugins/libicpcon.so          : RS-485 ICPCON Module                     (object, icpcon|atom)
+[01/01/09 01:30:23.650] 	plugins/libpci429_4.so        : ?                                        (?, ?)
+[01/01/09 01:30:23.658] 	plugins/libserial_plugin.so   : Serial Bus                               (object, serial)
+[01/01/09 01:30:23.660] 	plugins/libcodec_pui429.so    : ARINC 429 Codec Pui                      (object, arinc-pui429)
+[01/01/09 01:30:23.662] 	plugins/libcodec_xml.so       : XML-via-Network Datamap Query Codec      (object, xml-query)
+[01/01/09 01:30:23.664] 	plugins/libbus_analog.so      : Analog I/O Bus                           (object, daq2005|daq2006|daq2010|daq2016|daq2204|daq2205|daq2206|daq2208|daq2213|daq2214|daq2501|daq2502|PIO_DA)
+[01/01/09 01:30:23.665] 	plugins/libbuffer.so          : ?                                        (?, ?)
+[01/01/09 01:30:23.667] 	plugins/libbus429.so          : ARINC 429 Bus                            (object, pci429-4)
+[01/01/09 01:30:23.669] 	plugins/libfilters.so         : Standart Filter Set                      (object, angle|scale|log|mean|limit|periodic|coarse|maxspeed|rebase|formula|delta)
+[01/01/09 01:30:23.677] 	plugins/libbusnet.so          : TCP/UDP/UnixSocket Network Bus           (object, ethernet)
+[01/01/09 01:30:23.678] 	plugins/libinterface.so       : ?                                        (?, ?)
+[01/01/09 01:30:23.683] 	plugins/libolrtp_out.so       : OLRTP Codec Output                       (object, olrtp-out)
+[01/01/09 01:30:23.684] 	plugins/libcodec_sct.so       : Analog SCT Codec                         (object, sct-pci)
+[01/01/09 01:30:23.686] 	plugins/libcodec_analog.so    : Analog DC Codec                          (object, dc-pci)
+[01/01/09 01:30:23.687] 	plugins/libolrtp.so           : ?                                        (?, ?)
+[01/01/09 01:30:23.689] 	plugins/libcodec_buffer429.so : ARINC 429 Codec Buffer                   (object, arinc-buffer429)
+[01/01/09 01:30:23.690] 	plugins/libolrtp_in.so        : OLRTP Codec Input                        (object, olrtp-in)
+[01/01/09 01:30:23.692] 	plugins/libcodec_text.so      : Text-via-Network Codec                   (object, text)
+[01/01/09 01:30:23.694] 	plugins/libatom_motor.so      : Atom Step Motor Codec                    (object, stm|modbus)
+[01/01/09 01:30:23.695] 	plugins/libcodec_builder.so   : XML-via-Network Create Object Codec      (object, xml-builder)
+[01/01/09 01:30:23.697] 	plugins/libcodec429.so        : ARINC 429 Codec                          (object, arinc429)
+[01/01/09 01:30:23.698] 	plugins/libcodec_dio.so       : Discrete IO Codec                        (object, dio-pci)
+[01/01/09 01:30:23.700] 	plugins/libshared_memory.so   : Shared Memory Bus                        (object, shmem)
+[01/01/09 01:30:23.703] 	plugins/libcore.so            : ?                                        (?, ?)
+[01/01/09 01:30:23.705] 	plugins/libbus_dio.so         : Discrete I/O Bus                         (object, ixpio)
+[01/01/09 01:30:23.711] xmlloader process files:
+[01/01/09 01:30:23.712] 	datamap::add(): float uap5_6.ang_attack
+[01/01/09 01:30:23.712] 	datamap::add(): float uap5_6.ang_attack_max
+[01/01/09 01:30:23.713] 	datamap::add(): float uap5_6.vert_overload
+[01/01/09 01:30:23.713] 	datamap::add(): float uap5_6.vert_overload_max
+[01/01/09 01:30:23.713] 	datamap::add(): bool uap5_6.blenker_a
+[01/01/09 01:30:23.713] 	datamap::add(): bool uap5_6.blenker_b
+[01/01/09 01:30:23.713] 	datamap::add(): bool uap5_6.reset_button
+[01/01/09 01:30:23.713] 	datamap::add(): float agr_29mk_15.ang_bank
+[01/01/09 01:30:23.714] 	datamap::add(): float agr_29mk_15.ang_bank_command
+[01/01/09 01:30:23.714] 	datamap::add(): float agr_29mk_15.ang_pitch
+[01/01/09 01:30:23.714] 	datamap::add(): float agr_29mk_15.ang_pitch_command
+[01/01/09 01:30:23.714] 	datamap::add(): float agr_29mk_15.sliding_ball
+[01/01/09 01:30:23.714] 	datamap::add(): bool agr_29mk_15.agr_failure
+[01/01/09 01:30:23.714] 	datamap::add(): bool agr_29mk_15.arrester_button
+[01/01/09 01:30:23.714] 	datamap::add(): float agr_29mk_15.pitch_correction
+[01/01/09 01:30:23.715] 	datamap::add(): float pnp_72_12.distance
+[01/01/09 01:30:23.715] 	datamap::add(): bool pnp_72_12.distance_failure
+[01/01/09 01:30:23.715] 	datamap::add(): float pnp_72_12.desired_track
+[01/01/09 01:30:23.715] 	datamap::add(): bool pnp_72_12.desired_track_failure
+[01/01/09 01:30:23.715] 	datamap::add(): float pnp_72_12.drift_angle
+[01/01/09 01:30:23.715] 	datamap::add(): float pnp_72_12.course
+[01/01/09 01:30:23.715] 	datamap::add(): float pnp_72_12.azimuth
+[01/01/09 01:30:23.716] 	datamap::add(): bool pnp_72_12.course_failure
+[01/01/09 01:30:23.716] 	datamap::add(): bool pnp_72_12.glide_failure
+[01/01/09 01:30:23.716] 	datamap::add(): float pnp_72_12.glide_deflection
+[01/01/09 01:30:23.716] 	datamap::add(): float pnp_72_12.course_deflection
+[01/01/09 01:30:23.716] 	datamap::add(): bool pnp_72_12.course_operable
+[01/01/09 01:30:23.716] 	datamap::add(): bool pnp_72_12.system_failure
+[01/01/09 01:30:23.717] 	datamap::add(): bool pnp_72_12.azimuth_off
+[01/01/09 01:30:23.717] 	datamap::add(): bool pnp_72_12.power_off
+[01/01/09 01:30:23.717] 	datamap::add(): float pnp_72_12.desired_track_gear
+[01/01/09 01:30:23.717] 	datamap::add(): float da_200p.vertical_speed
+[01/01/09 01:30:23.717] 	datamap::add(): float da_200p.angle_bank
+[01/01/09 01:30:23.717] 	datamap::add(): float da_200p.sliding
+[01/01/09 01:30:23.717] 	datamap::add(): float kus_3.indicated_airspeed
+[01/01/09 01:30:23.718] 	datamap::add(): float kus_3.indicated_airspeed_max
+[01/01/09 01:30:23.718] 	datamap::add(): float kus_3.true_airspeed
+[01/01/09 01:30:23.718] 	datamap::add(): float vm_15pb.altitude
+[01/01/09 01:30:23.718] 	datamap::add(): float vm_15pb.air_pressure
+[01/01/09 01:30:23.718] 	datamap::add(): float a_034_4m_03.altitude
+[01/01/09 01:30:23.718] 	datamap::add(): bool a_034_4m_03.failure
+[01/01/09 01:30:23.718] 	datamap::add(): bool a_034_4m_03.exceeding_altitude
+[01/01/09 01:30:23.719] 	datamap::add(): float a_034_4m_03.altitude_danger
+[01/01/09 01:30:23.719] 	datamap::add(): bool a_034_4m_03.test_button
+[01/01/09 01:30:23.719] 	datamap::add(): float i1p_150.pressure
+[01/01/09 01:30:23.719] 	datamap::add(): float i2p_150.pressure
+[01/01/09 01:30:23.719] 	datamap::add(): float i1p_240.pressure
+[01/01/09 01:30:23.719] 	datamap::add(): float i2p_240.pressure
+[01/01/09 01:30:23.719] 	datamap::add(): float istr2_7.consumed_fuel_level
+[01/01/09 01:30:23.720] 	datamap::add(): float istr2_7.total_fuel_level
+[01/01/09 01:30:23.720] 	datamap::add(): bool istr2_7.pb1_empty_lamp
+[01/01/09 01:30:23.720] 	datamap::add(): bool istr2_7.pb2_empty_lamp
+[01/01/09 01:30:23.720] 	datamap::add(): bool istr2_7.kr_empty_lamp
+[01/01/09 01:30:23.720] 	datamap::add(): bool istr2_7.b1_empty_lamp
+[01/01/09 01:30:23.720] 	datamap::add(): bool istr2_7.ost_empty_lamp
+[01/01/09 01:30:23.720] 	datamap::add(): bool istr2_7.day_night_mode
+[01/01/09 01:30:23.721] 	datamap::add(): float istr2_7.total_fuel_level_gear
+[01/01/09 01:30:23.721] 	datamap::add(): bool istr2_7.day_night_button
+[01/01/09 01:30:23.721] 	datamap::add(): float itg_1m1_left.gas_temperature
+[01/01/09 01:30:23.721] 	datamap::add(): float itg_1m1_right.gas_temperature
+[01/01/09 01:30:23.721] 	datamap::add(): float ui2_8.right_engine_oil_pressure
+[01/01/09 01:30:23.721] 	datamap::add(): float ui2_8.left_engine_oil_pressure
+[01/01/09 01:30:23.721] 	datamap::add(): float v_1.direct_voltage
+[01/01/09 01:30:23.722] 	datamap::add(): float vf_04_150.alternating_voltage
+[01/01/09 01:30:23.722] 	datamap::add(): float ik_52.oxygen_pressure
+[01/01/09 01:30:23.722] 	datamap::add(): float ik_52.oxygen_flow
+[01/01/09 01:30:23.722] 	datamap::add(): float ite_2tb.rotation_right_engine
+[01/01/09 01:30:23.722] 	datamap::add(): float ite_2tb.rotation_left_engine
+[01/01/09 01:30:23.722] 	datamap::add(): bool light.off
+[01/01/09 01:30:23.723] 	datamap::add(): float light.bright
+[01/01/09 01:30:23.723] 	datamap::add(): float kus_3.true_airspeed_tmp
+[01/01/09 01:30:23.731] 	xml/kts25sm-si-set3.xml       
+[01/01/09 01:30:23.732] error: CreateObject ("datamap", "") failed
+[01/01/09 01:30:23.733] error: CreateObject ("environment", "") failed
