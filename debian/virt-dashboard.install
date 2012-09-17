@@ -1,0 +1,3 @@
+debian/buildroot/usr/bin/*.sh               usr/bin/
+debian/buildroot/usr/share/git-sync/*.sh    usr/share/git-sync/
+debian/buildroot/etc/git-sync/*             etc/git-sync/
