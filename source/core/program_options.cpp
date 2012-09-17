@@ -21,7 +21,6 @@ ProgramOptions::ProgramOptions(int argc, char* argv[])
         (kIpRemote.c_str(), po::value<string>(), "UDP connection remote IP address")
         (kPortLocal.c_str(), po::value<int>(), "UDP connection local port")
         (kPortRemote.c_str(), po::value<int>(), "UDP connection remote port")
-        (kRsAddress.c_str(), po::value<int>(), "RS-485 connection address")
         (kScenario.c_str(), po::value<string>(), "scenario file");
 
     try

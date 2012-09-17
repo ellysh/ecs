@@ -16,7 +16,6 @@ static const std::string kIpLocal = "ipl";
 static const std::string kIpRemote = "ipr";
 static const std::string kPortLocal = "portl";
 static const std::string kPortRemote = "portr";
-static const std::string kRsAddress = "rs";
 static const std::string kScenario = "scenario";
 
 class ProgramOptions

@@ -32,8 +32,7 @@ void VirtualController::CreateProtocol()
 {
     ControllerParser parser(options_.GetString(kScenario));
 
-    protocol_ = new ProtocolController(options_.GetInt(kRsAddress),
-                                       parser.GetAnswers());
+    protocol_ = new ProtocolController(parser.GetAnswers());
 }
 
 VirtualController::~VirtualController()
