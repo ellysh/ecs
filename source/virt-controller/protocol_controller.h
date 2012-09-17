@@ -10,12 +10,12 @@ namespace virt_dashboard
 class ProtocolController
 {
 public:
-    ProtocolController(ControllerParser::AnswerMap& answers) : answers_(answers) {}
+    ProtocolController(ControllerParser::AddressAnswerMap& answers) : answers_(answers) {}
 
     ByteArray GetAnswer(ByteArray request);
 
 private:
-    ControllerParser::AnswerMap answers_;
+    ControllerParser::AddressAnswerMap answers_;
 };
 
 }

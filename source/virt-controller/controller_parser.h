@@ -3,6 +3,7 @@
 
 #include <string>
 #include <list>
+#include <map>
 
 #include "scenario_parser.h"
 #include "types_vdb.h"
@@ -14,18 +15,19 @@ class ControllerParser : public ScenarioParser
 {
 public:
     typedef std::list< std::pair<ByteArray, ByteArray> > AnswerMap;
+    typedef std::map< Byte, AnswerMap > AddressAnswerMap;
 
 public:
     ControllerParser(std::string filename);
     virtual ~ControllerParser() {}
 
-    AnswerMap& GetAnswers();
+    AddressAnswerMap& GetAnswers();
 
 protected:
     virtual void ParseFileLine(std::string& line);
 
 private:
-    AnswerMap answers_;
+    AddressAnswerMap answers_;
 };
 
 }

@@ -25,16 +25,13 @@ void ScenarioParser::ParseFile(string& filename)
 
 ByteArray ScenarioParser::ParseRequest(string& request)
 {
-    if ( request.empty() )
-        return ByteArray();
-
     size_t start = 1;
     size_t end = request.find("]");
 
     return StringToArray(request, start, end);
 }
 
-Byte StringToByte(string& input)
+Byte ScenarioParser::StringToByte(string input)
 {
     int result;
     stringstream stream;

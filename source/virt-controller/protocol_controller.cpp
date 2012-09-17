@@ -8,18 +8,28 @@
 using namespace std;
 using namespace virt_dashboard;
 
+Byte GetAddress(ByteArray& request)
+{
+    return request[0];
+}
+
 ByteArray ProtocolController::GetAnswer(ByteArray request)
 {
-    if ( answers_.empty() )
+    Byte address = GetAddress(request);
+
+    if ( answers_.count(address) == 0 )
+        return ByteArray();
+
+    if ( answers_[address].empty() )
         ScenarioConclusion::ExitSuccess();
 
     cout << "ControllerParser::GetAnswer() - check = ";
-    PrintByteArray(answers_.front().first);
+    PrintByteArray(answers_[address].front().first);
 
-    if ( answers_.front().first == request )
+    if ( answers_[address].front().first == request )
     {
-        ByteArray result(answers_.front().second);
-        answers_.pop_front();
+        ByteArray result(answers_[address].front().second);
+        answers_[address].pop_front();
 
         cout << "\tanswer = ";
         PrintByteArray(result);
@@ -27,8 +37,5 @@ ByteArray ProtocolController::GetAnswer(ByteArray request)
         return result;
     }
     else
-    {
-        cout << "\tanswer = EMPTY" << endl;
         return ByteArray();
-    }
 }

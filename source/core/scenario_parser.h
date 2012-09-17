@@ -13,6 +13,7 @@ class ScenarioParser
 public:
     virtual ~ScenarioParser() {}
 
+    static Byte StringToByte(std::string input);
     static ByteArray StringToArray(std::string input, size_t start, size_t end);
 
 protected:
