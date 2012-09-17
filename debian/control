@@ -8,5 +8,4 @@ Standards-Version: 3.7.2
 Package: virt-dashboard
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: System for debugging controller interatcion software.
-It consists of controllers emulation and host emulation applications.
+Description: System for debugging controller interatcion software. It consists of controllers emulation and host emulation applications.

@@ -61,3 +61,5 @@ add_custom_target(deb
 
 # Subdirs
 add_subdirectory(source)
+add_subdirectory(conf)
+add_subdirectory(scripts)

@@ -1,0 +1,3 @@
+install(DIRECTORY .
+    DESTINATION bin
+    FILES_MATCHING PATTERN *.py)

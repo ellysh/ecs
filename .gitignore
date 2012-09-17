@@ -14,12 +14,13 @@ source/core/libvdb_core.so
 
 # deb building files
 bin/deb/
+debian/buildroot/
+debian/virt-dashboard.debhelper.log
+debian/virt-dashboard.substvars
+debian/virt-dashboard/
 build-stamp
 configure-stamp
 debian/files
-debian/simscreen.debhelper.log
-debian/simscreen.substvars
-debian/simscreen/
 install_manifest.txt
 *.1
 

@@ -9,9 +9,7 @@ from the simunit bus log file
 
 import sys
 
-USAGE = """
-Usage: log-to-vdu.py <file>
-"""
+USAGE = 'Usage: log-to-vdu.py <file>\n'
 
 def PrintUsage():
     sys.stderr.write(USAGE)
@@ -64,7 +62,7 @@ def ParseFile(filename):
     file.close()
 
 def main():
-    if len(sys.argv) < 1:
+    if len(sys.argv) < 2:
         PrintUsage()
 
     log_file = sys.argv[1]
