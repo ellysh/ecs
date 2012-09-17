@@ -18,6 +18,8 @@ int main(int argc, char* argv[])
 
     VirtualController controller(options);
 
+    //controller.Initialize();
+
     controller.Start();
 
     return 0;

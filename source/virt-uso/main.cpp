@@ -18,6 +18,8 @@ int main(int argc, char* argv[])
 
     VirtualUso uso(options);
 
+    //uso.Initialize();
+
     uso.Start();
 
     return 0;

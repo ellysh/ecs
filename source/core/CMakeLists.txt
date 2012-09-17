@@ -6,7 +6,8 @@ set(vdb_core_LIB_SRCS
     program_options.cpp
     scenario_conclusion.cpp
     scenario_parser.cpp
-    udp_connection.cpp)
+    udp_connection.cpp
+    virtual_device.cpp)
 
 add_library(vdb_core SHARED ${vdb_core_LIB_SRCS})
 
