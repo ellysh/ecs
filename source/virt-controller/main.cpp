@@ -18,7 +18,7 @@ int main(int argc, char* argv[])
 
     VirtualController controller(options);
 
-    //controller.Initialize();
+    controller.Initialize();
 
     controller.Start();
 

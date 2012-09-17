@@ -1,30 +1,27 @@
 #ifndef VIRTUAL_CONTROLLER_H
 #define VIRTUAL_CONTROLLER_H
 
-#include "udp_connection.h"
+#include "virtual_device.h"
 #include "macros.h"
 
 namespace virt_dashboard
 {
 
-class ProgramOptions;
 class ProtocolController;
 
-class VirtualController
+class VirtualController : public VirtualDevice
 {
 public:
-    VirtualController(ProgramOptions& options);
+    VirtualController(ProgramOptions& options) : VirtualDevice(options) {}
     virtual ~VirtualController();
 
-    void Start();
+    virtual void Start();
+
+protected:
+    virtual void CreateProtocol();
 
 private:
-    ProgramOptions& options_;
-    UdpConnection connection_;
     ProtocolController* protocol_;
-
-    void ConfigureConnection();
-    void CreateProtocol();
 
     DISALLOW_COPY_AND_ASSIGN(VirtualController)
 };

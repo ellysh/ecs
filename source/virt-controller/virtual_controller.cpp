@@ -13,21 +13,6 @@ using namespace virt_dashboard;
 static const int kReceiveDelay = 2 * 1000;
 static const int kAnswerDelay = 1;
 
-VirtualController::VirtualController(ProgramOptions& options) : options_(options)
-{
-    ConfigureConnection();
-
-    CreateProtocol();
-}
-
-void VirtualController::ConfigureConnection()
-{
-    connection_.SetLocalPoint(options_.GetString(kIpLocal),
-                              options_.GetInt(kPortLocal));
-    connection_.SetRemotePoint(options_.GetString(kIpRemote),
-                               options_.GetInt(kPortRemote));
-}
-
 void VirtualController::CreateProtocol()
 {
     ControllerParser parser(options_.GetString(kScenario));

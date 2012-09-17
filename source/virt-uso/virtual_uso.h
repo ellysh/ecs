@@ -1,30 +1,27 @@
 #ifndef VIRTUAL_USO_H
 #define VIRTUAL_USO_H
 
-#include "udp_connection.h"
+#include "virtual_device.h"
 #include "macros.h"
 
 namespace virt_dashboard
 {
 
-class ProgramOptions;
 class ProtocolUso;
 
-class VirtualUso
+class VirtualUso : public VirtualDevice
 {
 public:
-    VirtualUso(ProgramOptions& options);
+    VirtualUso(ProgramOptions& options) : VirtualDevice(options) {}
     virtual ~VirtualUso();
 
-    void Start();
+    virtual void Start();
+
+protected:
+    virtual void CreateProtocol();
 
 private:
-    ProgramOptions& options_;
-    UdpConnection connection_;
     ProtocolUso* protocol_;
-
-    void ConfigureConnection();
-    void CreateProtocol();
 
     DISALLOW_COPY_AND_ASSIGN(VirtualUso)
 };

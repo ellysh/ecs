@@ -3,28 +3,12 @@
 #include <iostream>
 
 #include "program_options.h"
-#include "udp_connection.h"
 #include "uso_parser.h"
 #include "protocol_uso.h"
 #include "functions_vdb.h"
 
 using namespace std;
 using namespace virt_dashboard;
-
-VirtualUso::VirtualUso(ProgramOptions& options) : options_(options)
-{
-    ConfigureConnection();
-
-    CreateProtocol();
-}
-
-void VirtualUso::ConfigureConnection()
-{
-    connection_.SetLocalPoint(options_.GetString(kIpLocal),
-                              options_.GetInt(kPortLocal));
-    connection_.SetRemotePoint(options_.GetString(kIpRemote),
-                               options_.GetInt(kPortRemote));
-}
 
 void VirtualUso::CreateProtocol()
 {
