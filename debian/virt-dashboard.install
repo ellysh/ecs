@@ -1,5 +1,5 @@
 debian/buildroot/usr/bin/*.py                   usr/bin/
 debian/buildroot/usr/bin/virt-*                 usr/bin/
 debian/buildroot/usr/lib/*                      usr/lib/
-debian/buildroot/usr/etc/virt-dashboard/*.vd?   etc/virt-dashboard/
-debian/buildroot/usr/etc/ld.so.conf.d/*.conf  etc/ld.so.conf.d/
+debian/buildroot/usr/share/virt-dashboard/*.vd?   usr/share/virt-dashboard/
+debian/buildroot/etc/ld.so.conf.d/*.conf  etc/ld.so.conf.d/

@@ -1,3 +1,3 @@
 install(DIRECTORY .
-    DESTINATION bin
+    DESTINATION /usr/bin
     FILES_MATCHING PATTERN *.py)

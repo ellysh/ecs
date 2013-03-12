@@ -14,9 +14,6 @@
 cmake_minimum_required(VERSION 2.6)
 project(virt-dashboard)
 
-# Fix the install path
-set(CMAKE_INSTALL_PREFIX /usr)
-
 # Build type by default is Debug
 if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Debug)
@@ -39,27 +36,9 @@ set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} -O2 -fomit-frame-pointer -funrol
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} -D__DEBUG__ -O0 -g")
 set(CMAKE_C_FLAGS ${CMAKE_CXX_FLAGS_RELEASE})
 
-# Targets for the deb packages building
-set(BIN_DIR ${PROJECT_SOURCE_DIR}/bin)
-set(DEB_DIR ${BIN_DIR}/deb)
-set(DEBIAN_DIR ${PROJECT_SOURCE_DIR}/debian)
-
-add_custom_target(deb-clean
-    COMMAND -rm -rf ${DEBIAN_DIR}/simscreen
-    COMMAND -rm -rf ${DEB_DIR}
-    COMMAND find bin -name \"*.dsc\" | xargs rm -f
-    COMMAND find bin -name "*.changes" | xargs rm -f
-    COMMAND find bin -name "*.deb" | xargs rm -f
-    COMMAND find bin -name "*.tar.gz" | xargs rm -f
-)
-
-add_custom_target(deb
-    COMMAND mkdir -p ${DEB_DIR}
-    COMMAND dpkg-buildpackage -rfakeroot -b -uc -us
-    COMMAND mv -f ../*.changes ../*.deb ${DEB_DIR}
-)
-
 # Subdirs
 add_subdirectory(source)
 add_subdirectory(conf)
 add_subdirectory(scripts)
+
+include(CMakeListsDeb.txt)

@@ -12,4 +12,4 @@ add_executable(virt-uso ${virt-uso_SRCS})
 
 target_link_libraries(virt-uso vdb_core ${Boost_LIBRARIES})
 
-install(TARGETS virt-uso DESTINATION bin)
+install(TARGETS virt-uso DESTINATION /usr/bin)
