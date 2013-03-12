@@ -14,8 +14,5 @@ void VirtualDevice::Initialize()
 
 void VirtualDevice::ConfigureConnection()
 {
-    connection_.SetLocalPoint(options_.GetString(kIpLocal),
-                              options_.GetInt(kPortLocal));
-    connection_.SetRemotePoint(options_.GetString(kIpRemote),
-                               options_.GetInt(kPortRemote));
+    connection_.Configure(options_);
 }

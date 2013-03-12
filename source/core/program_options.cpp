@@ -12,7 +12,7 @@ namespace po = boost::program_options;
 
 static const int kErrorValue = -1;
 
-ProgramOptions::ProgramOptions(int argc, char* argv[])
+ProgramOptions::ProgramOptions(const int argc, const char* argv[])
 {
     description_ = new po::options_description("Allowed options");
     description_->add_options()
@@ -40,7 +40,7 @@ ProgramOptions::~ProgramOptions()
     delete description_;
 }
 
-string ProgramOptions::GetString(string option_name)
+string ProgramOptions::GetString(const string option_name) const
 {
     if ( options_.count(option_name) == 0 )
         return string();
@@ -48,7 +48,7 @@ string ProgramOptions::GetString(string option_name)
     return options_[option_name].as<string>();
 }
 
-int ProgramOptions::GetInt(string option_name)
+int ProgramOptions::GetInt(const string option_name) const
 {
     if ( options_.count(option_name) == 0 )
         return kErrorValue;
@@ -56,7 +56,7 @@ int ProgramOptions::GetInt(string option_name)
     return options_[option_name].as<int>();
 }
 
-bool ProgramOptions::IsComplete()
+bool ProgramOptions::IsComplete() const
 {
     /* FIXME: Refactoring this method with MACROS */
     if ( options_.count(kHelp) != 0 )
@@ -80,7 +80,7 @@ bool ProgramOptions::IsComplete()
     return true;
 }
 
-po::options_description& ProgramOptions::GetDescription()
+po::options_description& ProgramOptions::GetDescription() const
 {
     return *description_;
 }

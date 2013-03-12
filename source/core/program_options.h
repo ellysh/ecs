@@ -21,13 +21,13 @@ static const std::string kScenario = "scenario";
 class ProgramOptions
 {
 public:
-    ProgramOptions(int argc, char* argv[]);
+    ProgramOptions(const int argc, const char* argv[]);
     ~ProgramOptions();
 
-    std::string GetString(std::string option_name);
-    int GetInt(std::string option_name);
-    po::options_description& GetDescription();
-    bool IsComplete();
+    std::string GetString(const std::string option_name) const;
+    int GetInt(const std::string option_name) const;
+    po::options_description& GetDescription() const;
+    bool IsComplete() const;
 
 private:
     po::variables_map options_;

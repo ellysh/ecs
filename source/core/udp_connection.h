@@ -17,9 +17,6 @@ public:
         socket_(io_service_), is_connected_(false) {};
     virtual ~UdpConnection() {};
 
-    void SetLocalPoint(std::string address, int port);
-    void SetRemotePoint(std::string address, int port);
-
     virtual ByteArray ReceiveData();
     virtual void SendData(const ByteArray& data);
     virtual void Configure(const ProgramOptions& options);
@@ -33,6 +30,8 @@ private:
     bool is_connected_;
 
     void Connect();
+    void SetLocalPoint(std::string address, int port);
+    void SetRemotePoint(std::string address, int port);
 };
 
 }

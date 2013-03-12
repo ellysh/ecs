@@ -6,7 +6,7 @@
 using namespace std;
 using namespace virt_dashboard;
 
-int main(int argc, char* argv[])
+int main(int argc, const char* argv[])
 {
     ProgramOptions options(argc, argv);
 

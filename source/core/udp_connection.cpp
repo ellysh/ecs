@@ -1,8 +1,9 @@
 #include "udp_connection.h"
 
 #include <iostream>
-
 #include <boost/bind.hpp>
+
+#include "program_options.h"
 
 using namespace std;
 using namespace virt_dashboard;
@@ -97,7 +98,11 @@ void UdpConnection::SendData(const ByteArray& data)
 
 void UdpConnection::Configure(const ProgramOptions& options)
 {
-    /* FIXME: Implement this method */
+    SetLocalPoint(options.GetString(kIpLocal),
+                  options.GetInt(kPortLocal));
+
+    SetRemotePoint(options.GetString(kIpRemote),
+                   options.GetInt(kPortRemote));
 }
 
 void UdpConnection::SetLocalPoint(string address, int port)
