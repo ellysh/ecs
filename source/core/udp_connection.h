@@ -4,22 +4,25 @@
 #include <string>
 #include <boost/asio.hpp>
 
+#include "connection.h"
 #include "types_vdb.h"
 
 namespace virt_dashboard
 {
 
-class UdpConnection
+class UdpConnection : public Connection
 {
 public:
     UdpConnection() :
         socket_(io_service_), is_connected_(false) {};
+    virtual ~UdpConnection() {};
 
     void SetLocalPoint(std::string address, int port);
     void SetRemotePoint(std::string address, int port);
 
-    ByteArray ReceiveData();
-    void SendData(ByteArray data);
+    virtual ByteArray ReceiveData();
+    virtual void SendData(const ByteArray& data);
+    virtual void Configure(const ProgramOptions& options);
 
 private:
     boost::asio::io_service io_service_;

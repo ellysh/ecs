@@ -6,6 +6,8 @@
 namespace virt_dashboard
 {
 
+class ProgramOptions;
+
 class Connection
 {
 public:

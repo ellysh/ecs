@@ -74,7 +74,7 @@ ByteArray UdpConnection::ReceiveData()
     return ArrayToVector(buffer, bytes_transferred);
 }
 
-void UdpConnection::SendData(ByteArray data)
+void UdpConnection::SendData(const ByteArray& data)
 {
     Connect();
 
@@ -93,6 +93,11 @@ void UdpConnection::SendData(ByteArray data)
         is_connected_ = false;
         cout << "UdpConnection::SendData() - error = " << error.what() << " code = " << error.code() << endl;
     }
+}
+
+void UdpConnection::Configure(const ProgramOptions& options)
+{
+    /* FIXME: Implement this method */
 }
 
 void UdpConnection::SetLocalPoint(string address, int port)
