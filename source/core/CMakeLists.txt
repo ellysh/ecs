@@ -12,6 +12,6 @@ set(vdb_core_LIB_SRCS
 
 add_library(vdb_core SHARED ${vdb_core_LIB_SRCS})
 
-target_link_libraries(vdb_core pthread ${Boost_LIBRARIES})
+target_link_libraries(vdb_core serial pthread ${Boost_LIBRARIES})
 
 install(TARGETS vdb_core DESTINATION /usr/lib/${PROJECT_NAME})

@@ -14,6 +14,18 @@
 cmake_minimum_required(VERSION 2.6)
 project(virt-dashboard)
 
+find_package(PkgConfig)
+pkg_check_modules(LIBSERIAL REQUIRED libserial)
+find_package(Boost 1.40 COMPONENTS system regex program_options REQUIRED)
+
+set(COMMON_INCLUDE_DIRS
+    ${Boost_INCLUDE_DIR}
+    ${LIBSERIAL_INCLUDE_DIRS}
+    ${PROJECT_SOURCE_DIR}/source/core)
+
+set(COMMON_LIBDIR
+    ${LIBSERIAL_LIBDIR})
+
 # Build type by default is Debug
 if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Debug)
@@ -21,22 +33,12 @@ endif(NOT CMAKE_BUILD_TYPE)
 
 message(STATUS "Build type: " ${CMAKE_BUILD_TYPE})
 
-# Find Linux packages
-find_package(Boost 1.40 COMPONENTS system regex program_options REQUIRED)
-
-# Linux paths and libs
-set(COMMON_LIBDIR )
-set(COMMON_INCLUDE_DIRS
-    ${Boost_INCLUDE_DIR}
-    ${PROJECT_SOURCE_DIR}/source/core)
-
 # CXXFLAGS and CMAKE_C_FLAGS
 set(CMAKE_CXX_FLAGS "-D__LINUX__ -Wvla -Wl,-z,defs -fPIC -std=c++0x")
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} -O2 -fomit-frame-pointer -funroll-loops -pipe")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} -D__DEBUG__ -O0 -g")
 set(CMAKE_C_FLAGS ${CMAKE_CXX_FLAGS_RELEASE})
 
-# Subdirs
 add_subdirectory(source)
 add_subdirectory(conf)
 add_subdirectory(scripts)
