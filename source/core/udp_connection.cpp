@@ -8,8 +8,6 @@
 using namespace std;
 using namespace virt_dashboard;
 
-static const int kInBufferLength = 1024;
-
 void UdpConnection::Connect()
 {
     if ( ! is_connected_ )

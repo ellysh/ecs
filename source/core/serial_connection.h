@@ -21,6 +21,8 @@ public:
 
 private:
     serial::SerialConnection* connection_;
+
+    bool IsConnected() const;
 };
 
 }

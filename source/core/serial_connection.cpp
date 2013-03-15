@@ -13,13 +13,18 @@ SerialConnection::~SerialConnection()
 
 ByteArray SerialConnection::ReceiveData()
 {
-    /* FIXME: Implement this method */
-    return ByteArray();
+    if ( ! IsConnected() )
+        return ByteArray();
+
+    return connection_->ReceiveAnswer(kInBufferLength);
 }
 
 void SerialConnection::SendData(const ByteArray& data)
 {
-    /* FIXME: Implement this method */
+    if ( ! IsConnected() )
+        return;
+
+    connection_->SendRequest(data);
 }
 
 void SerialConnection::Configure(const ProgramOptions& options)
@@ -27,3 +32,10 @@ void SerialConnection::Configure(const ProgramOptions& options)
     /* FIXME: Implement this method */
 }
 
+bool SerialConnection::IsConnected() const
+{
+    if ( connection_ != NULL )
+        return true;
+    else
+        return false;
+}

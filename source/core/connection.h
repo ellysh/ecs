@@ -6,6 +6,8 @@
 namespace virt_dashboard
 {
 
+static const int kInBufferLength = 1024;
+
 class ProgramOptions;
 
 class Connection
