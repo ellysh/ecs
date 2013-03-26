@@ -17,6 +17,7 @@ ProgramOptions::ProgramOptions(const int argc, const char* argv[])
     description_ = new po::options_description("Allowed options");
     description_->add_options()
         (kHelp.c_str(), "produce help message")
+        (kConnectionType.c_str(), po::value<string>(), "Type of the connection (`serial` or `udp`)")
         (kIpLocal.c_str(), po::value<string>(), "UDP: local IP address")
         (kIpRemote.c_str(), po::value<string>(), "UDP: remote IP address")
         (kPortLocal.c_str(), po::value<int>(), "UDP: local port")
@@ -58,26 +59,26 @@ int ProgramOptions::GetInt(const string option_name) const
     return options_[option_name].as<int>();
 }
 
+#define CHECK_EMPTY(option) \
+    if ( GetString(option).empty() ) \
+        return false;
+
+#define CHECK_ERROR_VALUE(option) \
+    if ( GetInt(option) == kErrorValue ) \
+        return false;
+
+
 bool ProgramOptions::IsComplete() const
 {
-    /* FIXME: Refactoring this method with MACROS */
     if ( options_.count(kHelp) != 0 )
         return false;
 
-    if ( GetString(kIpLocal).empty() )
-        return false;
+    CHECK_EMPTY(kIpLocal)
+    CHECK_EMPTY(kIpRemote)
+    CHECK_ERROR_VALUE(kPortLocal)
+    CHECK_ERROR_VALUE(kPortRemote)
 
-    if ( GetString(kIpRemote).empty() )
-        return false;
-
-    if ( GetString(kScenario).empty() )
-        return false;
-
-    if ( GetInt(kPortLocal) == kErrorValue )
-        return false;
-
-    if ( GetInt(kPortRemote) == kErrorValue )
-        return false;
+    CHECK_EMPTY(kScenario)
 
     return true;
 }
