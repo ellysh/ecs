@@ -1,6 +1,8 @@
 #ifndef VIRTUAL_DEVICE_H
 #define VIRTUAL_DEVICE_H
 
+#include <stddef.h>
+
 #include "connection.h"
 
 namespace virt_dashboard
@@ -11,7 +13,7 @@ class ProgramOptions;
 class VirtualDevice
 {
 public:
-    VirtualDevice(ProgramOptions& options) : options_(options) {}
+    VirtualDevice(ProgramOptions& options) : options_(options), connection_(NULL) {}
     virtual ~VirtualDevice() {}
 
     virtual void Start() = 0;
@@ -24,6 +26,7 @@ protected:
     virtual void CreateProtocol() = 0;
 
 private:
+    void CreateConnection();
     void ConfigureConnection();
 };
 

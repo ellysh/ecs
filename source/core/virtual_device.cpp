@@ -1,15 +1,31 @@
 #include "virtual_device.h"
 
 #include "program_options.h"
+#include "serial_connection.h"
+#include "udp_connection.h"
 
 using namespace std;
 using namespace virt_dashboard;
 
 void VirtualDevice::Initialize()
 {
+    CreateConnection();
+
     ConfigureConnection();
 
     CreateProtocol();
+}
+
+void VirtualDevice::CreateConnection()
+{
+    string connection_type = options_.GetString(kConnectionType);
+
+    if ( connection_type == kConnectionSerial )
+        connection_ = new SerialConnection();
+    else if ( connection_type == kConnectionUdp )
+        connection_ = new UdpConnection();
+
+    assert( connection_ != NULL );
 }
 
 void VirtualDevice::ConfigureConnection()
