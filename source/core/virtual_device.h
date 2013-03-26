@@ -19,6 +19,7 @@ public:
 
 protected:
     ProgramOptions& options_;
+    /* FIXME: Use the interface Connection class here */
     UdpConnection connection_;
 
     virtual void CreateProtocol() = 0;

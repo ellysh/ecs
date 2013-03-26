@@ -29,7 +29,13 @@ void SerialConnection::SendData(const ByteArray& data)
 
 void SerialConnection::Configure(const ProgramOptions& options)
 {
-    /* FIXME: Implement this method */
+    if ( IsConnected() )
+        return;
+
+    string dev_file = options.GetString(kDevFile);
+    int baud_rate = options.GetInt(kBaudRate);
+
+    connection_ = new serial::SerialConnection(dev_file, baud_rate);
 }
 
 bool SerialConnection::IsConnected() const
