@@ -73,10 +73,20 @@ bool ProgramOptions::IsComplete() const
     if ( options_.count(kHelp) != 0 )
         return false;
 
-    CHECK_EMPTY(kIpLocal)
-    CHECK_EMPTY(kIpRemote)
-    CHECK_ERROR_VALUE(kPortLocal)
-    CHECK_ERROR_VALUE(kPortRemote)
+    CHECK_EMPTY(kConnectionType)
+
+    if ( GetString(kConnectionType) == kConnectionUdp )
+    {
+        CHECK_EMPTY(kIpLocal)
+        CHECK_EMPTY(kIpRemote)
+        CHECK_ERROR_VALUE(kPortLocal)
+        CHECK_ERROR_VALUE(kPortRemote)
+    }
+    else if ( GetString(kConnectionType) == kConnectionSerial )
+    {
+        CHECK_EMPTY(kDevFile)
+        CHECK_ERROR_VALUE(kBaudRate)
+    }
 
     CHECK_EMPTY(kScenario)
 

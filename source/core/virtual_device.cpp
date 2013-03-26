@@ -20,11 +20,10 @@ void VirtualDevice::CreateConnection()
 {
     string connection_type = options_.GetString(kConnectionType);
 
-    if ( connection_type == kConnectionSerial )
-        connection_ = new SerialConnection();
-    else if ( connection_type == kConnectionUdp )
+    if ( connection_type == kConnectionUdp )
         connection_ = new UdpConnection();
-
+    else if ( connection_type == kConnectionSerial )
+        connection_ = new SerialConnection();
     assert( connection_ != NULL );
 }
 
