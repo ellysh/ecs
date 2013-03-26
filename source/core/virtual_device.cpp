@@ -14,5 +14,5 @@ void VirtualDevice::Initialize()
 
 void VirtualDevice::ConfigureConnection()
 {
-    connection_.Configure(options_);
+    connection_->Configure(options_);
 }

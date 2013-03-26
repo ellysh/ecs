@@ -33,7 +33,7 @@ void VirtualController::Start()
     while( true )
     {
         usleep(kReceiveDelay);
-        request = connection_.ReceiveData();
+        request = connection_->ReceiveData();
 
         if ( request.empty() )
             continue;
@@ -48,6 +48,6 @@ void VirtualController::Start()
         cout << "\tanswer = ";
         PrintByteArray(answer);
 
-        connection_.SendData(answer);
+        connection_->SendData(answer);
     }
 }

@@ -1,7 +1,7 @@
 #ifndef VIRTUAL_DEVICE_H
 #define VIRTUAL_DEVICE_H
 
-#include "udp_connection.h"
+#include "connection.h"
 
 namespace virt_dashboard
 {
@@ -19,8 +19,7 @@ public:
 
 protected:
     ProgramOptions& options_;
-    /* FIXME: Use the interface Connection class here */
-    UdpConnection connection_;
+    Connection* connection_;
 
     virtual void CreateProtocol() = 0;
 

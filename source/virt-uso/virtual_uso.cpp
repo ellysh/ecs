@@ -37,7 +37,7 @@ void VirtualUso::Start()
         cout << "\trequest = ";
         PrintByteArray(request);
 
-        connection_.SendData(request);
+        connection_->SendData(request);
 
         cout << "\tdelay = " << dec << protocol_->GetDelay() << endl;
         usleep(protocol_->GetDelay() * 1000);
