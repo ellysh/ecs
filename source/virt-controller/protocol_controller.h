@@ -2,7 +2,7 @@
 #define PROTOCOL_CONTROLLER_H
 
 #include "controller_parser.h"
-#include "types_vdb.h"
+#include "types_ecs.h"
 
 namespace virt_dashboard
 {

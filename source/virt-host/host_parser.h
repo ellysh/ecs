@@ -5,7 +5,7 @@
 #include <list>
 
 #include "scenario_parser.h"
-#include "types_vdb.h"
+#include "types_ecs.h"
 
 namespace virt_dashboard
 {

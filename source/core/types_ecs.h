@@ -1,5 +1,5 @@
-#ifndef TYPES_VDB_H
-#define TYPES_VDB_H
+#ifndef TYPES_ECS_H
+#define TYPES_ECS_H
 
 #include <vector>
 

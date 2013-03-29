@@ -2,7 +2,7 @@
 #define PROTOCOL_HOST_H
 
 #include "host_parser.h"
-#include "types_vdb.h"
+#include "types_ecs.h"
 
 namespace virt_dashboard
 {

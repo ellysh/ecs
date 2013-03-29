@@ -1,7 +1,7 @@
 #ifndef CONNECTION_H
 #define CONNECTION_H
 
-#include "types_vdb.h"
+#include "types_ecs.h"
 
 namespace virt_dashboard
 {

@@ -2,8 +2,6 @@
 
 #include <iostream>
 
-#include "types_vdb.h"
-
 using namespace std;
 using namespace virt_dashboard;
 

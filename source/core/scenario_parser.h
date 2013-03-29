@@ -3,7 +3,7 @@
 
 #include <string>
 
-#include "types_vdb.h"
+#include "types_ecs.h"
 
 namespace virt_dashboard
 {

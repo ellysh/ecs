@@ -5,7 +5,7 @@
 #include <boost/asio.hpp>
 
 #include "connection.h"
-#include "types_vdb.h"
+#include "types_ecs.h"
 
 namespace virt_dashboard
 {

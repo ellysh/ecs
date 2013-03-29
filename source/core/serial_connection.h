@@ -2,7 +2,7 @@
 #define VD_SERIAL_CONNECTION_H
 
 #include "connection.h"
-#include "types_vdb.h"
+#include "types_ecs.h"
 
 #include <libserial/serial_connection.h>
 
