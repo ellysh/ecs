@@ -15,9 +15,9 @@ source/core/libvdb_core.so
 # deb building files
 bin/deb/
 debian/buildroot/
-debian/virt-dashboard.debhelper.log
-debian/virt-dashboard.substvars
-debian/virt-dashboard/
+debian/*.debhelper.log
+debian/*.substvars
+debian/ecs/
 build-stamp
 configure-stamp
 debian/files

@@ -12,7 +12,7 @@
 # Remove the CMakeCache file for CMAKE_MINGW undefine
 
 cmake_minimum_required(VERSION 2.6)
-project(virt-dashboard)
+project(ecs)
 
 find_package(PkgConfig)
 pkg_check_modules(LIBSERIAL REQUIRED libserial)

@@ -1,11 +1,11 @@
-Source: virt-dashboard
+Source: ecs
 Section: main
 Priority: extra
 Maintainer: Ilya Shpigor <petrsum@gmail.com>
 Build-Depends: debhelper (>= 5)
 Standards-Version: 3.7.2
 
-Package: virt-dashboard
+Package: ecs
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: System for debugging controller interatcion software. It consists of controllers emulation and host emulation applications.
+Description: Environment for Controllers Simulation (ECS) is set of utilities to simulate data exchange with any devices through Serial Port and Ethernet connections
