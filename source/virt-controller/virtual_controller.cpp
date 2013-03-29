@@ -5,7 +5,7 @@
 #include "program_options.h"
 #include "controller_parser.h"
 #include "protocol_controller.h"
-#include "functions_vdb.h"
+#include "functions.h"
 
 using namespace std;
 using namespace virt_dashboard;

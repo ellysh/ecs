@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-#include "functions_vdb.h"
+#include "functions.h"
 #include "scenario_conclusion.h"
 
 using namespace std;

@@ -2,7 +2,7 @@ include_directories(${COMMON_INCLUDE_DIRS})
 link_directories(${COMMON_LIBDIR})
 
 set(core_LIB_SRCS
-    functions_vdb.cpp
+    functions.cpp
     program_options.cpp
     scenario_conclusion.cpp
     scenario_parser.cpp

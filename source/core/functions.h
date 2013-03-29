@@ -1,5 +1,5 @@
-#ifndef FUNCTIONS_VDB_H
-#define FUNCTIONS_VDB_H
+#ifndef FUNCTIONS_H
+#define FUNCTIONS_H
 
 #include "types_ecs.h"
 
