@@ -1,5 +1,5 @@
 debian/buildroot/usr/bin/*.py                   usr/bin/
 debian/buildroot/usr/bin/virt-*                 usr/bin/
 debian/buildroot/usr/lib/*                      usr/lib/
-debian/buildroot/usr/share/ecs/*.vd?            usr/share/ecs/
+debian/buildroot/usr/share/ecs/*.v?            usr/share/ecs/
 debian/buildroot/etc/ld.so.conf.d/*.conf        etc/ld.so.conf.d/
