@@ -4,7 +4,7 @@ link_directories(${COMMON_LIBDIR})
 
 set(virt-host_SRCS
     main.cpp
-    protocol_uso.cpp
+    protocol_host.cpp
     host_parser.cpp
     virtual_host.cpp)
 

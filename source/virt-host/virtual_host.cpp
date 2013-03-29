@@ -4,7 +4,7 @@
 
 #include "program_options.h"
 #include "host_parser.h"
-#include "protocol_uso.h"
+#include "protocol_host.h"
 #include "functions_vdb.h"
 
 using namespace std;
@@ -14,7 +14,7 @@ void VirtualHost::CreateProtocol()
 {
     HostParser parser(options_.GetString(kScenario));
 
-    protocol_ = new ProtocolUso(parser.GetRequests());
+    protocol_ = new ProtocolHost(parser.GetRequests());
 }
 
 VirtualHost::~VirtualHost()

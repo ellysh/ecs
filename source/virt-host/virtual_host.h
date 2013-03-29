@@ -7,7 +7,7 @@
 namespace virt_dashboard
 {
 
-class ProtocolUso;
+class ProtocolHost;
 
 class VirtualHost : public VirtualDevice
 {
@@ -21,7 +21,7 @@ protected:
     virtual void CreateProtocol();
 
 private:
-    ProtocolUso* protocol_;
+    ProtocolHost* protocol_;
 
     DISALLOW_COPY_AND_ASSIGN(VirtualHost)
 };

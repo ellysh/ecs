@@ -1,5 +1,5 @@
-#ifndef PROTOCOL_USO_H
-#define PROTOCOL_USO_H
+#ifndef PROTOCOL_HOST_H
+#define PROTOCOL_HOST_H
 
 #include "host_parser.h"
 #include "types_vdb.h"
@@ -7,10 +7,10 @@
 namespace virt_dashboard
 {
 
-class ProtocolUso
+class ProtocolHost
 {
 public:
-    ProtocolUso(HostParser::RequestMap& requests) : requests_(requests) {}
+    ProtocolHost(HostParser::RequestMap& requests) : requests_(requests) {}
 
     ByteArray GetRequest();
     int GetDelay();
