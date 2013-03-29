@@ -10,6 +10,6 @@ set(virt-host_SRCS
 
 add_executable(virt-host ${virt-host_SRCS})
 
-target_link_libraries(virt-host vdb_core ${Boost_LIBRARIES})
+target_link_libraries(virt-host core ${Boost_LIBRARIES})
 
 install(TARGETS virt-host DESTINATION /usr/bin)

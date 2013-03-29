@@ -10,7 +10,7 @@ Makefile
 # Binaries
 source/virt-controller/virt-controller
 source/virt-host/virt-host
-source/core/libvdb_core.so
+*.so
 
 # deb building files
 bin/deb/

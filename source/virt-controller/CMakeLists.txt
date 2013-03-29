@@ -10,6 +10,6 @@ set(virt-controller_SRCS
 
 add_executable(virt-controller ${virt-controller_SRCS})
 
-target_link_libraries(virt-controller vdb_core ${Boost_LIBRARIES})
+target_link_libraries(virt-controller core ${Boost_LIBRARIES})
 
 install(TARGETS virt-controller DESTINATION /usr/bin)
