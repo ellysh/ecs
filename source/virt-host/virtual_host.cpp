@@ -1,4 +1,4 @@
-#include "virtual_uso.h"
+#include "virtual_host.h"
 
 #include <iostream>
 
@@ -10,19 +10,19 @@
 using namespace std;
 using namespace virt_dashboard;
 
-void VirtualUso::CreateProtocol()
+void VirtualHost::CreateProtocol()
 {
     UsoParser parser(options_.GetString(kScenario));
 
     protocol_ = new ProtocolUso(parser.GetRequests());
 }
 
-VirtualUso::~VirtualUso()
+VirtualHost::~VirtualHost()
 {
     delete protocol_;
 }
 
-void VirtualUso::Start()
+void VirtualHost::Start()
 {
     ByteArray request;
 

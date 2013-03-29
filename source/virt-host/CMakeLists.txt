@@ -6,7 +6,7 @@ set(virt-host_SRCS
     main.cpp
     protocol_uso.cpp
     uso_parser.cpp
-    virtual_uso.cpp)
+    virtual_host.cpp)
 
 add_executable(virt-host ${virt-host_SRCS})
 

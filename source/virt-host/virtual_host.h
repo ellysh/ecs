@@ -1,5 +1,5 @@
-#ifndef VIRTUAL_USO_H
-#define VIRTUAL_USO_H
+#ifndef VIRTUAL_HOST_H
+#define VIRTUAL_HOST_H
 
 #include "virtual_device.h"
 #include "macros.h"
@@ -9,11 +9,11 @@ namespace virt_dashboard
 
 class ProtocolUso;
 
-class VirtualUso : public VirtualDevice
+class VirtualHost : public VirtualDevice
 {
 public:
-    VirtualUso(ProgramOptions& options) : VirtualDevice(options) {}
-    virtual ~VirtualUso();
+    VirtualHost(ProgramOptions& options) : VirtualDevice(options) {}
+    virtual ~VirtualHost();
 
     virtual void Start();
 
@@ -23,7 +23,7 @@ protected:
 private:
     ProtocolUso* protocol_;
 
-    DISALLOW_COPY_AND_ASSIGN(VirtualUso)
+    DISALLOW_COPY_AND_ASSIGN(VirtualHost)
 };
 
 }

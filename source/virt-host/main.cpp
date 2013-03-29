@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include "program_options.h"
-#include "virtual_uso.h"
+#include "virtual_host.h"
 
 using namespace std;
 using namespace virt_dashboard;
@@ -16,11 +16,11 @@ int main(int argc, const char* argv[])
         return 1;
     }
 
-    VirtualUso uso(options);
+    VirtualHost host(options);
 
-    uso.Initialize();
+    host.Initialize();
 
-    uso.Start();
+    host.Start();
 
     return 0;
 }
