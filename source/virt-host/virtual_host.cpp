@@ -3,7 +3,7 @@
 #include <iostream>
 
 #include "program_options.h"
-#include "uso_parser.h"
+#include "host_parser.h"
 #include "protocol_uso.h"
 #include "functions_vdb.h"
 
@@ -12,7 +12,7 @@ using namespace virt_dashboard;
 
 void VirtualHost::CreateProtocol()
 {
-    UsoParser parser(options_.GetString(kScenario));
+    HostParser parser(options_.GetString(kScenario));
 
     protocol_ = new ProtocolUso(parser.GetRequests());
 }

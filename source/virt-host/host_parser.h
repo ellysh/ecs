@@ -1,5 +1,5 @@
-#ifndef USO_PARSER_H
-#define USO_PARSER_H
+#ifndef HOST_PARSER_H
+#define HOST_PARSER_H
 
 #include <string>
 #include <list>
@@ -10,14 +10,14 @@
 namespace virt_dashboard
 {
 
-class UsoParser : public ScenarioParser
+class HostParser : public ScenarioParser
 {
 public:
     typedef std::list< std::pair<ByteArray, int> > RequestMap;
 
 public:
-    UsoParser(std::string filename);
-    virtual ~UsoParser() {}
+    HostParser(std::string filename);
+    virtual ~HostParser() {}
 
     RequestMap& GetRequests();
 

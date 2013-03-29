@@ -1,11 +1,11 @@
-#include "uso_parser.h"
+#include "host_parser.h"
 
 #include <boost/lexical_cast.hpp>
 
 using namespace std;
 using namespace virt_dashboard;
 
-UsoParser::UsoParser(string filename)
+HostParser::HostParser(string filename)
 {
     ParseFile(filename);
 }
@@ -23,7 +23,7 @@ int ParseDelay(string delay)
     return boost::lexical_cast<int>(result);
 }
 
-void UsoParser::ParseFileLine(string& line)
+void HostParser::ParseFileLine(string& line)
 {
     ByteArray request = ParseRequest(line);
     int delay = ParseDelay(line);
@@ -31,7 +31,7 @@ void UsoParser::ParseFileLine(string& line)
     requests_.push_back(pair<ByteArray,int>(request, delay));
 }
 
-UsoParser::RequestMap& UsoParser::GetRequests()
+HostParser::RequestMap& HostParser::GetRequests()
 {
     return requests_;
 }
