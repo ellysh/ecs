@@ -20,22 +20,20 @@ ByteArray ProtocolController::GetAnswer(ByteArray request)
     if ( answers_.count(address) == 0 )
         return ByteArray();
 
-    if ( answers_[address].empty() )
-        ScenarioConclusion::ExitSuccess();
-
     cout << "ControllerParser::GetAnswer() - check = ";
     PrintByteArray(answers_[address].front().first);
 
-    if ( answers_[address].front().first == request )
-    {
-        ByteArray result(answers_[address].front().second);
-        answers_[address].pop_front();
-
-        cout << "\tanswer = ";
-        PrintByteArray(result);
-
-        return result;
-    }
-    else
+    if ( answers_[address].front().first != request )
         return ByteArray();
+
+    ByteArray result(answers_[address].front().second);
+    answers_[address].pop_front();
+
+    cout << "\tanswer = ";
+    PrintByteArray(result);
+
+    if ( answers_[address].empty() )
+        ScenarioConclusion::ExitSuccess();
+
+    return result;
 }
