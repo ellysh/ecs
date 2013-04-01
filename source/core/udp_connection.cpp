@@ -33,7 +33,7 @@ void UdpConnection::Connect()
     }
 }
 
-ByteArray ArrayToVector(char* array, int size)
+ByteArray ArrayToVector(const char* array, const int size)
 {
     if ( size > kInBufferLength )
         return ByteArray();
@@ -103,13 +103,13 @@ void UdpConnection::Configure(const ProgramOptions& options)
                    options.GetInt(kPortRemote));
 }
 
-void UdpConnection::SetLocalPoint(string address, int port)
+void UdpConnection::SetLocalPoint(const string address, const int port)
 {
     boost::asio::ip::address ip_address = boost::asio::ip::address::from_string(address);
     local_point_ = boost::asio::ip::udp::endpoint(ip_address, port);
 }
 
-void UdpConnection::SetRemotePoint(string address, int port)
+void UdpConnection::SetRemotePoint(const string address, const int port)
 {
     boost::asio::ip::address ip_address = boost::asio::ip::address::from_string(address);
     remote_point_ = boost::asio::ip::udp::endpoint(ip_address, port);

@@ -30,8 +30,8 @@ private:
     bool is_connected_;
 
     void Connect();
-    void SetLocalPoint(std::string address, int port);
-    void SetRemotePoint(std::string address, int port);
+    void SetLocalPoint(const std::string address, const int port);
+    void SetRemotePoint(const std::string address, const int port);
 };
 
 }
