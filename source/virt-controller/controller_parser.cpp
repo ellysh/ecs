@@ -32,7 +32,7 @@ void ControllerParser::ParseFileLine(const string& line)
     answers_[address].push_back(pair<ByteArray,ByteArray>(request, answer));
 }
 
-ControllerParser::AddressAnswerMap& ControllerParser::GetAnswers()
+ControllerParser::AddressAnswerMap& ControllerParser::GetAnswers() const
 {
     return answers_;
 }

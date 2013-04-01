@@ -8,12 +8,12 @@
 using namespace std;
 using namespace ecs;
 
-Byte GetAddress(ByteArray& request)
+Byte GetAddress(const ByteArray& request)
 {
     return request[0];
 }
 
-ByteArray ProtocolController::GetAnswer(ByteArray request)
+ByteArray ProtocolController::GetAnswer(const ByteArray request)
 {
     Byte address = GetAddress(request);
 

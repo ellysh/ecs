@@ -10,9 +10,9 @@ namespace ecs
 class ProtocolController
 {
 public:
-    ProtocolController(ControllerParser::AddressAnswerMap& answers) : answers_(answers) {}
+    ProtocolController(const ControllerParser::AddressAnswerMap& answers) : answers_(answers) {}
 
-    ByteArray GetAnswer(ByteArray request);
+    ByteArray GetAnswer(const ByteArray request);
 
 private:
     ControllerParser::AddressAnswerMap answers_;

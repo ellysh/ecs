@@ -21,13 +21,13 @@ public:
     ControllerParser(const std::string filename);
     virtual ~ControllerParser() {}
 
-    AddressAnswerMap& GetAnswers();
+    AddressAnswerMap& GetAnswers() const;
 
 protected:
     virtual void ParseFileLine(const std::string& line);
 
 private:
-    AddressAnswerMap answers_;
+    mutable AddressAnswerMap answers_;
 };
 
 }
