@@ -5,7 +5,7 @@
 using namespace std;
 using namespace ecs;
 
-ControllerParser::ControllerParser(const std::string filename)
+ControllerParser::ControllerParser(const std::string filename) : ScenarioParser(filename)
 {
     ParseFile(filename);
 }

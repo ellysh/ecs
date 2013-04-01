@@ -11,6 +11,7 @@ namespace ecs
 class ScenarioParser
 {
 public:
+    ScenarioParser(const std::string filename) {}
     virtual ~ScenarioParser() {}
 
 protected:

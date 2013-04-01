@@ -5,7 +5,7 @@
 using namespace std;
 using namespace ecs;
 
-HostParser::HostParser(const string filename)
+HostParser::HostParser(const string filename) : ScenarioParser(filename)
 {
     ParseFile(filename);
 }
