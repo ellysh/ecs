@@ -3,13 +3,13 @@
 # -*- coding: UTF-8 -*-
 
 """
-Script for generate virt-dashboard uso scenario
+Script to generate ECS host scenario
 from the simunit bus log file
 """
 
 import sys
 
-USAGE = 'Usage: log-to-vdu.py <file>\n'
+USAGE = 'Usage: log-to-vh.py <file>\n'
 
 def PrintUsage():
     sys.stderr.write(USAGE)
@@ -39,8 +39,6 @@ def ParseDelay(line, next):
         return GetTime(next) - GetTime(line)
     else:
         return 1000 + GetTime(next) - GetTime(line)
-
-
 
 def ParseFile(filename):
     file = open(filename)

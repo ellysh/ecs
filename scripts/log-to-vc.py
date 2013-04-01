@@ -3,13 +3,13 @@
 # -*- coding: UTF-8 -*-
 
 """
-Script for generate virt-dashboard controller scenario
+Script to generate ECS controller scenario
 from the simunit bus log file
 """
 
 import sys
 
-USAGE = 'Usage: log-to-vdc.py <file>\n'
+USAGE = 'Usage: log-to-vc.py <file>\n'
 
 def PrintUsage():
     sys.stderr.write(USAGE)

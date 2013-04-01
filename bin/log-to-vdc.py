@@ -1,1 +1,0 @@
-../scripts/log-to-vdc.py
