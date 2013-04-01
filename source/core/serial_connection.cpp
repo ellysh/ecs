@@ -16,7 +16,7 @@ ByteArray SerialConnection::ReceiveData()
     if ( ! IsConnected() )
         return ByteArray();
 
-    return connection_->ReceiveAnswer(kInBufferLength);
+    return connection_->ReceiveData(kInBufferLength);
 }
 
 void SerialConnection::SendData(const ByteArray& data)
@@ -24,7 +24,7 @@ void SerialConnection::SendData(const ByteArray& data)
     if ( ! IsConnected() )
         return;
 
-    connection_->SendRequest(data);
+    connection_->SendData(data);
 }
 
 void SerialConnection::Configure(const ProgramOptions& options)
