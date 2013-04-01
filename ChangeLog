@@ -1,2 +1,7 @@
+* ecs 1.1
+	- Implement the Serial connection support
+	- Add the README file
+	- Refactoring of the source code
+
 * ecs 1.0
 	- Base functional implementation

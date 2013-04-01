@@ -1,3 +1,11 @@
+ecs (1.1) precise; urgency=low
+
+  * Implement the Serial connection support
+  * Add the README file
+  * Refactoring of the source code
+
+ -- Ilya Shpigor <petrsum@gmail.com>  Mon, 01 Apr 2013 11:57:05 +0400
+
 ecs (1.0) stable; urgency=low
 
   * First package version
