@@ -1,5 +1,7 @@
 #include "controller_parser.h"
 
+#include "functions.h"
+
 using namespace std;
 using namespace ecs;
 
@@ -13,15 +15,15 @@ ByteArray ParseAnswer(string answer)
     size_t start = answer.find_last_of("[") + 1;
     size_t end = answer.find_last_of("]");
 
-    return ScenarioParser::StringToArray(answer, start, end);
+    return StringToArray(answer, start, end);
 }
 
-Byte GetAddress(string& input)
+Byte GetAddress(const string& input)
 {
-    return ScenarioParser::StringToByte(input.substr(1, 3));
+    return StringToByte(input.substr(1, 3));
 }
 
-void ControllerParser::ParseFileLine(string& line)
+void ControllerParser::ParseFileLine(const string& line)
 {
     ByteArray request(ScenarioParser::ParseRequest(line));
     ByteArray answer(ParseAnswer(line));

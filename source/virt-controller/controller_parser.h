@@ -24,7 +24,7 @@ public:
     AddressAnswerMap& GetAnswers();
 
 protected:
-    virtual void ParseFileLine(std::string& line);
+    virtual void ParseFileLine(const std::string& line);
 
 private:
     AddressAnswerMap answers_;

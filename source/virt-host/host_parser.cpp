@@ -23,7 +23,7 @@ int ParseDelay(string delay)
     return boost::lexical_cast<int>(result);
 }
 
-void HostParser::ParseFileLine(string& line)
+void HostParser::ParseFileLine(const string& line)
 {
     ByteArray request = ParseRequest(line);
     int delay = ParseDelay(line);

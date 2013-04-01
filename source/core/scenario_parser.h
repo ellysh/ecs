@@ -13,15 +13,12 @@ class ScenarioParser
 public:
     virtual ~ScenarioParser() {}
 
-    static Byte StringToByte(std::string input);
-    static ByteArray StringToArray(std::string input, size_t start, size_t end);
-
 protected:
-    virtual void ParseFileLine(std::string& line) = 0;
+    virtual void ParseFileLine(const std::string& line) = 0;
 
-    void ParseFile(std::string& filename);
+    void ParseFile(const std::string& filename);
 
-    static ByteArray ParseRequest(std::string& request);
+    static ByteArray ParseRequest(const std::string& request);
 };
 
 }

@@ -22,7 +22,7 @@ public:
     RequestMap& GetRequests();
 
 protected:
-    virtual void ParseFileLine(std::string& line);
+    virtual void ParseFileLine(const std::string& line);
 
 private:
     RequestMap requests_;
