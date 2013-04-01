@@ -12,7 +12,9 @@ class ProtocolController
 public:
     ProtocolController(const ControllerParser::AddressAnswerMap& answers) : answers_(answers) {}
 
-    ByteArray GetAnswer(const ByteArray request);
+    ByteArray GetAnswer(const ByteArray& request);
+    bool IsAnswerExist(const ByteArray& request) const;
+    void NextAnswer(const ByteArray& request);
 
 private:
     ControllerParser::AddressAnswerMap answers_;

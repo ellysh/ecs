@@ -13,7 +13,7 @@ Byte GetAddress(const ByteArray& request)
     return request[0];
 }
 
-ByteArray ProtocolController::GetAnswer(const ByteArray request)
+ByteArray ProtocolController::GetAnswer(const ByteArray& request)
 {
     Byte address = GetAddress(request);
 
@@ -36,4 +36,15 @@ ByteArray ProtocolController::GetAnswer(const ByteArray request)
         ScenarioConclusion::ExitSuccess();
 
     return result;
+}
+
+bool ProtocolController::IsAnswerExist(const ByteArray& request) const
+{
+    /* FIXME: Implement this method */
+    return false;
+}
+
+void ProtocolController::NextAnswer(const ByteArray& request)
+{
+    /* FIXME: Implement this method */
 }
