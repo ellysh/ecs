@@ -42,6 +42,7 @@ void VirtualHost::Start()
         cout << "\tdelay = " << dec << protocol_->GetDelay() << endl;
         usleep(protocol_->GetDelay() * 1000);
 
-        protocol_->NextRequest();
+        if ( ! options_.GetBool(kLoopMode) )
+            protocol_->NextRequest();
     }
 }

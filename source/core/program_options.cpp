@@ -24,7 +24,8 @@ ProgramOptions::ProgramOptions(const int argc, const char* argv[])
         (kPortRemote.c_str(), po::value<int>(), "UDP: remote port")
         (kDevFile.c_str(), po::value<string>(), "Serial: device file")
         (kBaudRate.c_str(), po::value<int>(), "Serial: baud rate")
-        (kScenario.c_str(), po::value<string>(), "scenario file");
+        (kScenario.c_str(), po::value<string>(), "scenario file")
+        (kLoopMode.c_str(), "loop mode");
 
     try
     {
