@@ -16,7 +16,7 @@ ByteArray SerialConnection::ReceiveData()
     if ( ! IsConnected() )
         return ByteArray();
 
-    return connection_->ReceiveData(kInBufferLength);
+    return connection_->ReceiveData(kMaxBufferSize);
 }
 
 void SerialConnection::SendData(const ByteArray& data)

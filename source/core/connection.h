@@ -6,7 +6,7 @@
 namespace ecs
 {
 
-static const int kInBufferLength = 1024;
+static const int kMaxBufferSize = 1024;
 
 class ProgramOptions;
 
