@@ -12,7 +12,7 @@ class ProtocolHost;
 class VirtualHost : public VirtualDevice
 {
 public:
-    VirtualHost(ProgramOptions& options) : VirtualDevice(options) {}
+    VirtualHost(const ProgramOptions& options) : VirtualDevice(options) {}
     virtual ~VirtualHost();
 
     virtual void Start();

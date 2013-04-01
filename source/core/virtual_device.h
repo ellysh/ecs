@@ -13,14 +13,14 @@ class ProgramOptions;
 class VirtualDevice
 {
 public:
-    VirtualDevice(ProgramOptions& options) : options_(options), connection_(NULL) {}
+    VirtualDevice(const ProgramOptions& options) : options_(options), connection_(NULL) {}
     virtual ~VirtualDevice() {}
 
     virtual void Start() = 0;
     void Initialize();
 
 protected:
-    ProgramOptions& options_;
+    const ProgramOptions& options_;
     Connection* connection_;
 
     virtual void CreateProtocol() = 0;

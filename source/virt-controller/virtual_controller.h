@@ -12,7 +12,7 @@ class ProtocolController;
 class VirtualController : public VirtualDevice
 {
 public:
-    VirtualController(ProgramOptions& options) : VirtualDevice(options) {}
+    VirtualController(const ProgramOptions& options) : VirtualDevice(options) {}
     virtual ~VirtualController();
 
     virtual void Start();
