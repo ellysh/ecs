@@ -5,12 +5,12 @@
 using namespace std;
 using namespace ecs;
 
-ControllerParser::ControllerParser(std::string filename)
+ControllerParser::ControllerParser(const std::string filename)
 {
     ParseFile(filename);
 }
 
-ByteArray ParseAnswer(string answer)
+ByteArray ParseAnswer(const string answer)
 {
     size_t start = answer.find_last_of("[") + 1;
     size_t end = answer.find_last_of("]");

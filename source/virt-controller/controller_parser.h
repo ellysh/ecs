@@ -18,7 +18,7 @@ public:
     typedef std::map< Byte, AnswerMap > AddressAnswerMap;
 
 public:
-    ControllerParser(std::string filename);
+    ControllerParser(const std::string filename);
     virtual ~ControllerParser() {}
 
     AddressAnswerMap& GetAnswers();
