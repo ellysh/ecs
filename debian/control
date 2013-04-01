@@ -8,4 +8,4 @@ Standards-Version: 3.7.2
 Package: ecs
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: Environment for Controllers Simulation (ECS) is set of utilities to simulate data exchange with any devices through Serial Port and Ethernet connections
+Description: Environment for Controllers Simulation (ECS) is set of utilities to simulate data exchange with any devices through Serial  and Ethernet connections

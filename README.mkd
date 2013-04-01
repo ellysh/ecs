@@ -5,7 +5,7 @@ INTRODUCTION
 ------------
 
 Environment for Controllers Simulation (ECS) is set of utilities to simulate data exchange with
-any devices through SerialPort and Ethernet connections.
+any devices through Serial and Ethernet connections.
 
 BUILDING
 --------
@@ -46,7 +46,22 @@ Another way is installing with Makefile default mechanism:
 USAGE
 -----
 
-FIXME: This section will be described soon.
+This is example to simulate data exchange through the serial connection.
+
+1. Create the virtual serial port with `socat` utility:
+
+    $ socat PTY,link=/tmp/ttyS0,raw,echo=0 PTY,link=/tmp/ttyS1,raw,echo=0
+
+2. Run the virtual controller utility:
+
+    $ virt-controller --dev /tmp/ttyS0 --baud 57600 --scenario a20-test.vc --type serial
+
+3. Send data to the `/tmp/ttyS1` port for virtual controller:
+
+    $ write-data -f /tmp/ttyS1 -b 57600 -d 3147
+
+Serial Utils project have been used at the third point of the instruction above:<br/>
+https://github.com/ellysh/serial-utils
 
 COPYING
 -------
