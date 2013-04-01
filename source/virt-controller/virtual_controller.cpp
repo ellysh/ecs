@@ -51,7 +51,7 @@ void VirtualController::Start()
 
         connection_->SendData(answer);
 
-        if ( ! options_.GetBool(kLoopMode) )
+        if ( ! options_.GetBool(kCycleMode) )
             protocol_->NextAnswer(request);
     }
 }

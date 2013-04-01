@@ -25,7 +25,7 @@ ProgramOptions::ProgramOptions(const int argc, const char* argv[])
         (kDevFile.c_str(), po::value<string>(), "Serial: device file")
         (kBaudRate.c_str(), po::value<int>(), "Serial: baud rate")
         (kScenario.c_str(), po::value<string>(), "scenario file")
-        (kLoopMode.c_str(), "loop mode");
+        (kCycleMode.c_str(), "cycle mode");
 
     try
     {

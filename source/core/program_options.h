@@ -22,7 +22,7 @@ static const std::string kBaudRate = "baud";
 static const std::string kConnectionType = "type";
 static const std::string kConnectionSerial = "serial";
 static const std::string kConnectionUdp = "udp";
-static const std::string kLoopMode = "loop";
+static const std::string kCycleMode = "cycle";
 
 class ProgramOptions
 {
