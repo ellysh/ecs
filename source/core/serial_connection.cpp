@@ -3,7 +3,7 @@
 #include "program_options.h"
 
 using namespace std;
-using namespace virt_dashboard;
+using namespace ecs;
 
 SerialConnection::~SerialConnection()
 {

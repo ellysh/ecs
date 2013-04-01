@@ -3,7 +3,7 @@
 
 #include <vector>
 
-namespace virt_dashboard
+namespace ecs
 {
 
 typedef unsigned char Byte;

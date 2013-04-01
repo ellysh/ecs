@@ -5,7 +5,7 @@
 
 #include "connection.h"
 
-namespace virt_dashboard
+namespace ecs
 {
 
 class ProgramOptions;

@@ -3,7 +3,7 @@
 #include "scenario_conclusion.h"
 
 using namespace std;
-using namespace virt_dashboard;
+using namespace ecs;
 
 ByteArray ProtocolHost::GetRequest()
 {

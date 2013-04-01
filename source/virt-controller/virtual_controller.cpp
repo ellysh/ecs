@@ -8,7 +8,7 @@
 #include "functions.h"
 
 using namespace std;
-using namespace virt_dashboard;
+using namespace ecs;
 
 static const int kReceiveDelay = 2 * 1000;
 static const int kAnswerDelay = 1;

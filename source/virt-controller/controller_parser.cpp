@@ -1,7 +1,7 @@
 #include "controller_parser.h"
 
 using namespace std;
-using namespace virt_dashboard;
+using namespace ecs;
 
 ControllerParser::ControllerParser(std::string filename)
 {

@@ -3,7 +3,7 @@
 #include <boost/lexical_cast.hpp>
 
 using namespace std;
-using namespace virt_dashboard;
+using namespace ecs;
 
 HostParser::HostParser(string filename)
 {

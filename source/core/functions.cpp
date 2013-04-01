@@ -3,7 +3,7 @@
 #include <iostream>
 
 using namespace std;
-using namespace virt_dashboard;
+using namespace ecs;
 
 void PrintByteArray(ByteArray input)
 {

@@ -4,7 +4,7 @@
 #include "host_parser.h"
 #include "types_ecs.h"
 
-namespace virt_dashboard
+namespace ecs
 {
 
 class ProtocolHost

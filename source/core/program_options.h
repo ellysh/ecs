@@ -8,7 +8,7 @@
 
 namespace po = boost::program_options;
 
-namespace virt_dashboard
+namespace ecs
 {
 
 static const std::string kHelp = "help";

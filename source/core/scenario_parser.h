@@ -5,7 +5,7 @@
 
 #include "types_ecs.h"
 
-namespace virt_dashboard
+namespace ecs
 {
 
 class ScenarioParser

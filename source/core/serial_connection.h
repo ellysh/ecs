@@ -6,7 +6,7 @@
 
 #include <libserial/serial_connection.h>
 
-namespace virt_dashboard
+namespace ecs
 {
 
 class SerialConnection : public Connection

@@ -6,7 +6,7 @@
 #include "scenario_conclusion.h"
 
 using namespace std;
-using namespace virt_dashboard;
+using namespace ecs;
 
 namespace po = boost::program_options;
 

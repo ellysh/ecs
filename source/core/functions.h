@@ -3,6 +3,6 @@
 
 #include "types_ecs.h"
 
-extern void PrintByteArray(virt_dashboard::ByteArray input);
+extern void PrintByteArray(ecs::ByteArray input);
 
 #endif

@@ -7,7 +7,7 @@
 #include "connection.h"
 #include "types_ecs.h"
 
-namespace virt_dashboard
+namespace ecs
 {
 
 class UdpConnection : public Connection

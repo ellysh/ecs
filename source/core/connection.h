@@ -3,7 +3,7 @@
 
 #include "types_ecs.h"
 
-namespace virt_dashboard
+namespace ecs
 {
 
 static const int kInBufferLength = 1024;

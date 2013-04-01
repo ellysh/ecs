@@ -1,7 +1,7 @@
 #ifndef SCENARIO_CONCLUSION_H
 #define SCENARIO_CONCLUSION_H
 
-namespace virt_dashboard
+namespace ecs
 {
 
 class ScenarioConclusion

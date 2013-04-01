@@ -5,7 +5,7 @@
 #include "udp_connection.h"
 
 using namespace std;
-using namespace virt_dashboard;
+using namespace ecs;
 
 void VirtualDevice::Initialize()
 {

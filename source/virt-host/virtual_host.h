@@ -4,7 +4,7 @@
 #include "virtual_device.h"
 #include "macros.h"
 
-namespace virt_dashboard
+namespace ecs
 {
 
 class ProtocolHost;

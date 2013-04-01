@@ -4,7 +4,7 @@
 #include "virtual_host.h"
 
 using namespace std;
-using namespace virt_dashboard;
+using namespace ecs;
 
 int main(int argc, const char* argv[])
 {
