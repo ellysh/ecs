@@ -10,10 +10,10 @@ namespace ecs
 class ProtocolHost
 {
 public:
-    ProtocolHost(HostParser::RequestMap& requests) : requests_(requests) {}
+    ProtocolHost(const HostParser::RequestMap& requests) : requests_(requests) {}
 
-    ByteArray GetRequest();
-    int GetDelay();
+    ByteArray GetRequest() const;
+    int GetDelay() const;
     void NextRequest();
 
 private:

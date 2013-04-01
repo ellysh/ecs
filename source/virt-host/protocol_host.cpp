@@ -5,7 +5,7 @@
 using namespace std;
 using namespace ecs;
 
-ByteArray ProtocolHost::GetRequest()
+ByteArray ProtocolHost::GetRequest() const
 {
     if ( requests_.empty() )
         ScenarioConclusion::ExitSuccess();
@@ -13,7 +13,7 @@ ByteArray ProtocolHost::GetRequest()
     return requests_.front().first;
 }
 
-int ProtocolHost::GetDelay()
+int ProtocolHost::GetDelay() const
 {
     return requests_.front().second;
 }
