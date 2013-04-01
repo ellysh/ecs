@@ -45,18 +45,26 @@ ProgramOptions::~ProgramOptions()
 
 string ProgramOptions::GetString(const string option_name) const
 {
-    if ( options_.count(option_name) == 0 )
+    if ( GetBool(option_name) )
+        return options_[option_name].as<string>();
+    else
         return string();
-
-    return options_[option_name].as<string>();
 }
 
 int ProgramOptions::GetInt(const string option_name) const
 {
-    if ( options_.count(option_name) == 0 )
+    if ( GetBool(option_name) )
+        return options_[option_name].as<int>();
+    else
         return kErrorValue;
+}
 
-    return options_[option_name].as<int>();
+bool ProgramOptions::GetBool(const std::string option_name) const
+{
+    if ( options_.count(option_name) != 0 )
+        return true;
+    else
+        return false;
 }
 
 #define CHECK_EMPTY(option) \
@@ -67,10 +75,9 @@ int ProgramOptions::GetInt(const string option_name) const
     if ( GetInt(option) == kErrorValue ) \
         return false;
 
-
 bool ProgramOptions::IsComplete() const
 {
-    if ( options_.count(kHelp) != 0 )
+    if ( GetBool(kHelp) )
         return false;
 
     CHECK_EMPTY(kConnectionType)

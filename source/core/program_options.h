@@ -20,9 +20,9 @@ static const std::string kScenario = "scenario";
 static const std::string kDevFile = "dev";
 static const std::string kBaudRate = "baud";
 static const std::string kConnectionType = "type";
-
 static const std::string kConnectionSerial = "serial";
 static const std::string kConnectionUdp = "udp";
+static const std::string kLoopMode = "loop";
 
 class ProgramOptions
 {
@@ -32,6 +32,7 @@ public:
 
     std::string GetString(const std::string option_name) const;
     int GetInt(const std::string option_name) const;
+    bool GetBool(const std::string option_name) const;
     po::options_description& GetDescription() const;
     bool IsComplete() const;
 
