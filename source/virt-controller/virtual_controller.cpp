@@ -40,9 +40,17 @@ void VirtualController::Start()
 
         answer = protocol_->GetAnswer(request);
 
+        if ( answer.empty() )
+        {
+            cout << "\tanswer = EMPTY" << endl;
+            continue;
+        }
+
         cout << "\tanswer = ";
         PrintByteArray(answer);
 
         connection_->SendData(answer);
+
+        protocol_->NextAnswer(request);
     }
 }

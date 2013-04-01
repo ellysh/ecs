@@ -7,9 +7,6 @@ using namespace ecs;
 
 ByteArray ProtocolHost::GetRequest() const
 {
-    if ( requests_.empty() )
-        ScenarioConclusion::ExitSuccess();
-
     return requests_.front().first;
 }
 
@@ -21,4 +18,7 @@ int ProtocolHost::GetDelay() const
 void ProtocolHost::NextRequest()
 {
     requests_.pop_front();
+
+    if ( requests_.empty() )
+        ScenarioConclusion::ExitSuccess();
 }

@@ -27,25 +27,11 @@ ByteArray ProtocolController::GetAnswer(const ByteArray& request)
         return ByteArray();
 
     ByteArray result(answers_[address].front().second);
-    answers_[address].pop_front();
 
     cout << "\tanswer = ";
     PrintByteArray(result);
 
-    if ( answers_[address].empty() )
-        ScenarioConclusion::ExitSuccess();
-
     return result;
-}
-
-bool ProtocolController::IsAnswerExist(const ByteArray& request) const
-{
-    Byte address = GetAddress(request);
-
-    if ( ! answers_[address].empty() )
-        return true;
-    else
-        return false;
 }
 
 void ProtocolController::NextAnswer(const ByteArray& request)
@@ -53,4 +39,7 @@ void ProtocolController::NextAnswer(const ByteArray& request)
     Byte address = GetAddress(request);
 
     answers_[address].pop_front();
+
+    if ( answers_[address].empty() )
+        ScenarioConclusion::ExitSuccess();
 }
