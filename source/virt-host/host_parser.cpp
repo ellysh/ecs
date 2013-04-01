@@ -5,12 +5,12 @@
 using namespace std;
 using namespace ecs;
 
-HostParser::HostParser(string filename)
+HostParser::HostParser(const string filename)
 {
     ParseFile(filename);
 }
 
-int ParseDelay(string delay)
+int ParseDelay(const string delay)
 {
     if ( delay.empty() )
         return 0;
@@ -31,7 +31,7 @@ void HostParser::ParseFileLine(const string& line)
     requests_.push_back(pair<ByteArray,int>(request, delay));
 }
 
-HostParser::RequestMap& HostParser::GetRequests()
+HostParser::RequestMap& HostParser::GetRequests() const
 {
     return requests_;
 }

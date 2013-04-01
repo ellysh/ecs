@@ -16,16 +16,16 @@ public:
     typedef std::list< std::pair<ByteArray, int> > RequestMap;
 
 public:
-    HostParser(std::string filename);
+    HostParser(const std::string filename);
     virtual ~HostParser() {}
 
-    RequestMap& GetRequests();
+    RequestMap& GetRequests() const;
 
 protected:
     virtual void ParseFileLine(const std::string& line);
 
 private:
-    RequestMap requests_;
+    mutable RequestMap requests_;
 };
 
 }
