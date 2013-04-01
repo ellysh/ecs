@@ -17,7 +17,7 @@ public:
     void NextAnswer(const ByteArray& request);
 
 private:
-    ControllerParser::AddressAnswerMap answers_;
+    mutable ControllerParser::AddressAnswerMap answers_;
 };
 
 }

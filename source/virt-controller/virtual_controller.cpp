@@ -10,9 +10,6 @@
 using namespace std;
 using namespace ecs;
 
-static const int kReceiveDelay = 2 * 1000;
-static const int kAnswerDelay = 1;
-
 void VirtualController::CreateProtocol()
 {
     ControllerParser parser(options_.GetString(kScenario));
@@ -32,7 +29,6 @@ void VirtualController::Start()
 
     while( true )
     {
-        usleep(kReceiveDelay);
         request = connection_->ReceiveData();
 
         if ( request.empty() )
@@ -42,7 +38,6 @@ void VirtualController::Start()
         cout << "\trequest = ";
         PrintByteArray(request);
 
-        usleep(kAnswerDelay);
         answer = protocol_->GetAnswer(request);
 
         cout << "\tanswer = ";

@@ -40,11 +40,17 @@ ByteArray ProtocolController::GetAnswer(const ByteArray& request)
 
 bool ProtocolController::IsAnswerExist(const ByteArray& request) const
 {
-    /* FIXME: Implement this method */
-    return false;
+    Byte address = GetAddress(request);
+
+    if ( ! answers_[address].empty() )
+        return true;
+    else
+        return false;
 }
 
 void ProtocolController::NextAnswer(const ByteArray& request)
 {
-    /* FIXME: Implement this method */
+    Byte address = GetAddress(request);
+
+    answers_[address].pop_front();
 }
