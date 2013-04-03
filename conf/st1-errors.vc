@@ -1,28 +1,40 @@
-# This is scenario to test ST1 step motor controller without errors on RS line
+# This is scenario to test ST1 step motor controller with errors on RS line
 
 # Move Stop
+# Error
+[01 47] [01 C7]
 [01 47] [01 47]
 
 # Init
 [01 71 15 70] [01 71 15]
+# Error:
+[01 71 12 00 0A] [01 F1]
 [01 71 12 00 0A] [01 71 12]
 [01 71 13 00 C8] [01 71 13]
 [01 71 14 00 14] [01 71 14]
 
 # Move Home
+# Error
+[01 44 00] [01 C4]
 [01 44 00] [01 44]
 [01 72 02] [01 72 02 03]
 [01 72 02] [01 72 02 03]
-[01 72 02] [01 72 02 03]
+# Error
+[01 72 02] [01 F2]
 [01 72 02] [01 72 02 13]
 
 # Move Scale Null
+# Error
+[01 43 00 00 04 B0] [01 C3]
 [01 43 00 00 04 B0] [01 43]
 [01 72 01] [01 72 01 01]
 [01 72 01] [01 72 01 01]
-[01 72 01] [01 72 01 01]
+# Error
+[01 72 01] [01 F2]
 [01 72 01] [01 72 01 00]
 
 # Move Absolute
 [01 43 00 00 00 FF] [01 43]
+# Error
+[01 43 00 00 00 00] [01 C3]
 [01 43 00 00 00 00] [01 43]
