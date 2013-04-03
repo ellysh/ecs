@@ -1,5 +1,5 @@
 # This is scenario for initialization A20 step motor controller
-# with configuration from KTS25SM project. UDP port is 4001 and RS number is 1
+
 [31 47] [31 47]
 [31 71 13 03 84] [31 71 13]
 [31 71 12 00 14] [31 71 12]

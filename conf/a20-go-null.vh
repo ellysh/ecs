@@ -1,5 +1,5 @@
-# This is scenario for A20 step motor controller
-# moving to null position
+# This is scenario for A20 step motor controller moving to null position
+
 [31 47] 12
 [31 71 13 05 14] 5
 [31 71 12 05 14] 13
