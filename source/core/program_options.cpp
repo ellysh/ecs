@@ -12,7 +12,7 @@ const char* ProgramOptions::GetString(const string& option) const
     if ( (itr != end_) && (++itr != end_) )
         return *itr;
     else
-        return 0;
+        return "";
 }
 
 int ProgramOptions::GetInt(const string& option) const
