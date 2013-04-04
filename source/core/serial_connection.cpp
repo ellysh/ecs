@@ -41,7 +41,9 @@ ByteArray SerialConnection::ReceiveData()
 
     if ( error != 0 )
     {
-        cout << GetTimeStamp() << "\treceive - TIMEOUT" << endl;
+        if ( error == ETIMEDOUT )
+            cout << GetTimeStamp() << "\treceive - TIMEOUT" << endl;
+
         return ByteArray();
     }
 
