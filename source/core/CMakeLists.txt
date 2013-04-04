@@ -4,6 +4,7 @@ link_directories(${COMMON_LIBDIR})
 set(core_LIB_SRCS
     functions.cpp
     program_options.cpp
+    thread.cpp
     scenario_conclusion.cpp
     scenario_parser.cpp
     serial_connection.cpp
