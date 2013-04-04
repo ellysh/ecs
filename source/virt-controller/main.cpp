@@ -12,6 +12,7 @@ void PrintUsage()
     cout << "Usage: virt-controller [options]" << endl;
     cout << "Options:" << endl;
     cout << "\t--scenario FILE\t\tScenario file" << endl;
+    cout << "\t--timeout MS\tTimeout for receiving data from host in milliseconds" << endl;
     cout << "\t--type [serial | udp]\tType of the connection" << endl;
     cout << "\t--ipl IP_ADDRESS\tUDP: local IP address" << endl;
     cout << "\t--ipr IP_ADDRESS\tUDP: remote IP address" << endl;
