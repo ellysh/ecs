@@ -15,9 +15,10 @@ static const std::string kScenario = "--scenario";
 static const std::string kDevFile = "--dev";
 static const std::string kBaudRate = "--baud";
 static const std::string kConnectionType = "--type";
-static const std::string kConnectionSerial = "--serial";
-static const std::string kConnectionUdp = "--udp";
 static const std::string kCycleMode = "--cycle";
+
+static const std::string kConnectionSerial = "serial";
+static const std::string kConnectionUdp = "udp";
 
 }
 
