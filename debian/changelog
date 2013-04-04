@@ -1,3 +1,11 @@
+ecs (1.2) precise; urgency=low
+
+  * Implement delays checking for the virtual controller with Serial connection
+  * Use custom options parsing algorithm instead the Boost program_options
+  * Refactoring of the source code
+
+ -- Ilya Shpigor <petrsum@gmail.com>  Thu, 04 Apr 2013 15:24:46 +0400
+
 ecs (1.1) precise; urgency=low
 
   * Implement the Serial connection support
