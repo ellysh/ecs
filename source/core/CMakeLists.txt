@@ -13,6 +13,6 @@ set(core_LIB_SRCS
 
 add_library(core SHARED ${core_LIB_SRCS})
 
-target_link_libraries(core serial pthread ${Boost_LIBRARIES})
+target_link_libraries(core serial pthread rt ${Boost_LIBRARIES})
 
 install(TARGETS core DESTINATION /usr/lib/${PROJECT_NAME})

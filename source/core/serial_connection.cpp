@@ -2,9 +2,12 @@
 
 #include "program_options.h"
 #include "option_names.h"
+#include "thread.h"
 
 using namespace std;
 using namespace ecs;
+
+static ByteArray gReceiveData;
 
 SerialConnection::~SerialConnection()
 {
@@ -12,12 +15,35 @@ SerialConnection::~SerialConnection()
         delete connection_;
 }
 
+void* ReceiveDataLoop(void* args)
+{
+    serial::SerialConnection* connection = reinterpret_cast<serial::SerialConnection*>(args);
+
+    gReceiveData = connection->ReceiveData(kMaxBufferSize);
+}
+
 ByteArray SerialConnection::ReceiveData()
 {
     if ( ! IsConnected() )
         return ByteArray();
 
-    return connection_->ReceiveData(kMaxBufferSize);
+    pthread_t thread = CreateThread(ReceiveDataLoop, reinterpret_cast<void*>(connection_));
+
+    timespec time;
+    clock_gettime(CLOCK_REALTIME, &time);
+    time.tv_sec += 1;
+
+    int error = pthread_timedjoin_np(thread, NULL, &time);
+
+    pthread_cancel(thread);
+    pthread_join(thread, NULL);
+
+    if ( error != 0 )
+    {
+        cout << "receive - TIMEOUT" << endl;
+        return ByteArray();
+    }
+    return gReceiveData;
 }
 
 void SerialConnection::SendData(const ByteArray& data)
