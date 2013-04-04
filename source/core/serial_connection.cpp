@@ -3,6 +3,7 @@
 #include "program_options.h"
 #include "option_names.h"
 #include "thread.h"
+#include "functions.h"
 
 using namespace std;
 using namespace ecs;
@@ -40,7 +41,7 @@ ByteArray SerialConnection::ReceiveData()
 
     if ( error != 0 )
     {
-        cout << "receive - TIMEOUT" << endl;
+        cout << GetTimeStamp() << "\treceive - TIMEOUT" << endl;
         return ByteArray();
     }
 

@@ -3,6 +3,8 @@
 #include <iostream>
 #include <sstream>
 
+#include <sys/time.h>
+
 using namespace std;
 using namespace ecs;
 
@@ -43,4 +45,19 @@ ByteArray ecs::StringToArray(const string input, const size_t start, const size_
     }
 
     return result;
+}
+
+string ecs::GetTimeStamp()
+{
+    char tmbuf[128], tmbuf2[128];
+    struct timeval time;
+    struct tm* tm;
+
+    gettimeofday(&time, 0);
+    tm = localtime(&(time.tv_sec));
+
+    strftime(tmbuf2, sizeof(tmbuf2),"%d/%m/%y %H:%M:%S", tm);
+    sprintf( tmbuf, "[%s.%03d] ", tmbuf2, (int)(time.tv_usec/1000) );
+
+    return tmbuf;
 }

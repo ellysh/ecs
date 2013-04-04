@@ -35,8 +35,7 @@ void VirtualController::Start()
         if ( request.empty() )
             continue;
 
-        cout << "main()" << endl;
-        cout << "\trequest = ";
+        cout << endl << GetTimeStamp() << "\trequest = ";
         PrintByteArray(request);
 
         answer = protocol_->GetAnswer(request);

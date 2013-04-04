@@ -20,16 +20,13 @@ ByteArray ProtocolController::GetAnswer(const ByteArray& request)
     if ( answers_.count(address) == 0 )
         return ByteArray();
 
-    cout << "ControllerParser::GetAnswer() - check = ";
+    cout << "\tcheck with = ";
     PrintByteArray(answers_[address].front().first);
 
     if ( answers_[address].front().first != request )
         return ByteArray();
 
     ByteArray result(answers_[address].front().second);
-
-    cout << "\tanswer = ";
-    PrintByteArray(result);
 
     return result;
 }
