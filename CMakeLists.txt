@@ -16,7 +16,7 @@ project(ecs)
 
 find_package(PkgConfig)
 pkg_check_modules(LIBSERIAL REQUIRED libserial)
-find_package(Boost 1.40 COMPONENTS system regex program_options REQUIRED)
+find_package(Boost 1.40 COMPONENTS system REQUIRED)
 
 set(COMMON_INCLUDE_DIRS
     ${Boost_INCLUDE_DIR}
