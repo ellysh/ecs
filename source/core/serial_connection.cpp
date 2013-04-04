@@ -1,6 +1,7 @@
 #include "serial_connection.h"
 
 #include "program_options.h"
+#include "option_names.h"
 
 using namespace std;
 using namespace ecs;

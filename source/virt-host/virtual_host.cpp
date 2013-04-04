@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "program_options.h"
+#include "option_names.h"
 #include "host_parser.h"
 #include "protocol_host.h"
 #include "functions.h"
@@ -42,7 +43,7 @@ void VirtualHost::Start()
         cout << "\tdelay = " << dec << protocol_->GetDelay() << endl;
         usleep(protocol_->GetDelay() * 1000);
 
-        if ( ! options_.GetBool(kCycleMode) )
+        if ( ! options_.IsExist(kCycleMode) )
             protocol_->NextRequest();
     }
 }

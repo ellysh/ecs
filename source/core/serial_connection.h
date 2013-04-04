@@ -23,6 +23,8 @@ private:
     serial::SerialConnection* connection_;
 
     bool IsConnected() const;
+
+    DISALLOW_COPY_AND_ASSIGN(SerialConnection)
 };
 
 }

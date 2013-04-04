@@ -4,6 +4,7 @@
 #include <boost/bind.hpp>
 
 #include "program_options.h"
+#include "option_names.h"
 
 using namespace std;
 using namespace ecs;

@@ -28,6 +28,8 @@ protected:
 private:
     void CreateConnection();
     void ConfigureConnection();
+
+    DISALLOW_COPY_AND_ASSIGN(VirtualDevice)
 };
 
 }

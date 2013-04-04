@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "program_options.h"
+#include "option_names.h"
 #include "controller_parser.h"
 #include "protocol_controller.h"
 #include "functions.h"
@@ -51,7 +52,7 @@ void VirtualController::Start()
 
         connection_->SendData(answer);
 
-        if ( ! options_.GetBool(kCycleMode) )
+        if ( ! options_.IsExist(kCycleMode) )
             protocol_->NextAnswer(request);
     }
 }

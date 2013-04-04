@@ -2,7 +2,6 @@
 #define VIRTUAL_CONTROLLER_H
 
 #include "virtual_device.h"
-#include "macros.h"
 
 namespace ecs
 {

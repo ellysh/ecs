@@ -2,7 +2,6 @@
 #define VIRTUAL_HOST_H
 
 #include "virtual_device.h"
-#include "macros.h"
 
 namespace ecs
 {

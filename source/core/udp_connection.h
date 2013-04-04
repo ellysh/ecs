@@ -32,6 +32,8 @@ private:
     void Connect();
     void SetLocalPoint(const std::string address, const int port);
     void SetRemotePoint(const std::string address, const int port);
+
+    DISALLOW_COPY_AND_ASSIGN(UdpConnection)
 };
 
 }

@@ -8,14 +8,14 @@ using namespace ecs;
 
 int main(int argc, const char* argv[])
 {
-    ProgramOptions options(argc, argv);
-
+    ProgramOptions options(argv, argv + argc);
+#if 0
     if ( ! options.IsComplete() )
     {
         cout << options.GetDescription() << "\n";
         return 1;
     }
-
+#endif
     VirtualHost host(options);
 
     host.Initialize();
