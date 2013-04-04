@@ -59,7 +59,7 @@ ByteArray UdpConnection::ReceiveData()
 
     try
     {
-        /* FIXME: Try to use receive() nethod instead the receive_from() one */
+        /* FIXME: Try to use receive() method instead the receive_from() one */
         if ( socket_.available() != 0 )
             bytes_transferred = socket_.receive_from(
                                     boost::asio::buffer(buffer, kMaxBufferSize),

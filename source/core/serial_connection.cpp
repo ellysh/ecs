@@ -29,25 +29,13 @@ ByteArray SerialConnection::ReceiveData()
 
     pthread_t thread = CreateThread(ReceiveDataLoop, reinterpret_cast<void*>(connection_));
 
-    if ( timeout_ != 0 )
+    int error =  CancelThread(thread, timeout_);
+
+    if ( error != 0 )
     {
-        timespec time;
-        clock_gettime(CLOCK_REALTIME, &time);
-        time.tv_nsec += timeout_ * 1000 * 1000;
-
-        int error = pthread_timedjoin_np(thread, NULL, &time);
-
-        pthread_cancel(thread);
-        pthread_join(thread, NULL);
-
-        if ( error != 0 )
-        {
-            cout << "receive - TIMEOUT" << endl;
-            return ByteArray();
-        }
+        cout << "receive - TIMEOUT" << endl;
+        return ByteArray();
     }
-    else
-        pthread_join(thread, NULL);
 
     return gReceiveData;
 }

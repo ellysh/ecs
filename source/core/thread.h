@@ -8,7 +8,8 @@ namespace ecs
 
 typedef void* (thread_fn) (void *data);
 
-pthread_t CreateThread(thread_fn* function, void* data);
+pthread_t CreateThread(const thread_fn* function, void* data);
+int CancelThread(const pthread_t& thread, const long timeout);
 
 }
 
