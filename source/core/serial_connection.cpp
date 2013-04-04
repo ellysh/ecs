@@ -29,20 +29,26 @@ ByteArray SerialConnection::ReceiveData()
 
     pthread_t thread = CreateThread(ReceiveDataLoop, reinterpret_cast<void*>(connection_));
 
-    timespec time;
-    clock_gettime(CLOCK_REALTIME, &time);
-    time.tv_sec += 1;
-
-    int error = pthread_timedjoin_np(thread, NULL, &time);
-
-    pthread_cancel(thread);
-    pthread_join(thread, NULL);
-
-    if ( error != 0 )
+    if ( timeout_ != 0 )
     {
-        cout << "receive - TIMEOUT" << endl;
-        return ByteArray();
+        timespec time;
+        clock_gettime(CLOCK_REALTIME, &time);
+        time.tv_nsec += timeout_ * 1000 * 1000;
+
+        int error = pthread_timedjoin_np(thread, NULL, &time);
+
+        pthread_cancel(thread);
+        pthread_join(thread, NULL);
+
+        if ( error != 0 )
+        {
+            cout << "receive - TIMEOUT" << endl;
+            return ByteArray();
+        }
     }
+    else
+        pthread_join(thread, NULL);
+
     return gReceiveData;
 }
 
@@ -63,6 +69,8 @@ void SerialConnection::Configure(const ProgramOptions& options)
     int baud_rate = options.GetInt(kBaudRate);
 
     connection_ = new serial::SerialConnection(dev_file, baud_rate);
+
+    timeout_ = options.GetInt(kTimeout);
 }
 
 bool SerialConnection::IsConnected() const
