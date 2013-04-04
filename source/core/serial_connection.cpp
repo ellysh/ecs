@@ -8,6 +8,7 @@ using namespace std;
 using namespace ecs;
 
 static ByteArray gReceiveData;
+static bool gIsReceived = false;
 
 SerialConnection::~SerialConnection()
 {
@@ -20,6 +21,8 @@ void* ReceiveDataLoop(void* args)
     serial::SerialConnection* connection = reinterpret_cast<serial::SerialConnection*>(args);
 
     gReceiveData = connection->ReceiveData(kMaxBufferSize);
+
+    gIsReceived = true;
 }
 
 ByteArray SerialConnection::ReceiveData()
@@ -29,7 +32,11 @@ ByteArray SerialConnection::ReceiveData()
 
     pthread_t thread = CreateThread(ReceiveDataLoop, reinterpret_cast<void*>(connection_));
 
-    int error =  CancelThread(thread, timeout_);
+    int error;
+    if ( gIsReceived )
+        error =  CancelThread(thread, timeout_);
+    else
+        error = CancelThread(thread, 0);
 
     if ( error != 0 )
     {
