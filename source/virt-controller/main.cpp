@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "program_options.h"
+#include "option_names.h"
 #include "virtual_controller.h"
 
 using namespace std;
@@ -25,9 +26,28 @@ void PrintUsage()
     exit(0);
 }
 
-bool IsOptionsComplete()
+#define CHECK_OPTION_EXIST(option) \
+    if ( ! options.IsExist(option) ) \
+        return false;
+
+bool IsOptionsComplete(const ProgramOptions& options)
 {
-    /* FIXME: Implement this method */
+    CHECK_OPTION_EXIST(kScenario)
+    CHECK_OPTION_EXIST(kConnectionType)
+
+    if ( options.GetString(kConnectionType) == kConnectionUdp )
+    {
+        CHECK_OPTION_EXIST(kIpLocal)
+        CHECK_OPTION_EXIST(kIpRemote)
+        CHECK_OPTION_EXIST(kPortLocal)
+        CHECK_OPTION_EXIST(kPortRemote)
+    }
+    else if ( options.GetString(kConnectionType) == kConnectionSerial )
+    {
+        CHECK_OPTION_EXIST(kDevFile)
+        CHECK_OPTION_EXIST(kBaudRate)
+    }
+
     return true;
 }
 
@@ -35,7 +55,7 @@ int main(int argc, const char* argv[])
 {
     ProgramOptions options(argv, argv + argc);
 
-    if ( ! IsOptionsComplete() )
+    if ( ! IsOptionsComplete(options) )
         PrintUsage();
 
     VirtualController controller(options);
