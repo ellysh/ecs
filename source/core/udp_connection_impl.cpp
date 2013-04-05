@@ -59,11 +59,8 @@ ByteArray UdpConnectionImpl::ReceiveData(const size_t size)
 
     try
     {
-        /* FIXME: Try to use receive() method instead the receive_from() one */
-        if ( socket_.available() != 0 )
-            bytes_transferred = socket_.receive_from(
-                                    boost::asio::buffer(buffer, size),
-                                    remote_point_);
+        bytes_transferred = socket_.receive_from(boost::asio::buffer(buffer, size),
+                                                 remote_point_);
     }
     catch ( boost::system::system_error error )
     {
@@ -71,15 +68,7 @@ ByteArray UdpConnectionImpl::ReceiveData(const size_t size)
         exit(1);
     }
 
-    ByteArray result;
-
-    if ( size < bytes_transferred )
-    {
-        delete[] buffer;
-        return result;
-    }
-
-    result = ArrayToVector(buffer, bytes_transferred);
+    ByteArray result = ArrayToVector(buffer, bytes_transferred);
 
     delete[] buffer;
     return result;
