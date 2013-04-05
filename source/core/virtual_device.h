@@ -17,6 +17,7 @@ public:
     virtual ~VirtualDevice() {}
 
     virtual void Start() = 0;
+
     void Initialize();
 
 protected:
@@ -27,7 +28,8 @@ protected:
 
 private:
     void CreateConnection();
-    void ConfigureConnection();
+    void CreateUdpConnection();
+    void CreateSerialConnection();
 
     DISALLOW_COPY_AND_ASSIGN(VirtualDevice)
 };

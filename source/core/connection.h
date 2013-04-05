@@ -16,18 +16,15 @@ class ConnectionImpl;
 class Connection
 {
 public:
-    Connection() : connection_(NULL) {};
+    Connection(ConnectionImpl* const connection) : connection_(connection) {};
     virtual ~Connection();
 
     ByteArray ReceiveData();
     void SendData(const ByteArray& data);
-    virtual void Configure(const ProgramOptions& options) = 0;
 
 protected:
     ConnectionImpl* connection_;
     long timeout_;
-
-    bool IsInit() const;
 
     DISALLOW_COPY_AND_ASSIGN(Connection)
 };

@@ -9,8 +9,6 @@ set(core_LIB_SRCS
     thread.cpp
     scenario_conclusion.cpp
     scenario_parser.cpp
-    serial_connection.cpp
-    udp_connection.cpp
     udp_connection_impl.cpp
     virtual_device.cpp)
 

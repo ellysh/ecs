@@ -12,8 +12,7 @@ static bool gIsReceived = false;
 
 Connection::~Connection()
 {
-    if ( IsInit() )
-        delete connection_;
+    delete connection_;
 }
 
 static void* ReceiveDataLoop(void* args)
@@ -27,9 +26,6 @@ static void* ReceiveDataLoop(void* args)
 
 ByteArray Connection::ReceiveData()
 {
-    if ( ! IsInit() )
-        return ByteArray();
-
     pthread_t thread = CreateThread(ReceiveDataLoop, reinterpret_cast<void*>(connection_));
 
     int error;
@@ -51,16 +47,5 @@ ByteArray Connection::ReceiveData()
 
 void Connection::SendData(const ByteArray& data)
 {
-    if ( ! IsInit() )
-        return;
-
     connection_->SendData(data);
-}
-
-bool Connection::IsInit() const
-{
-    if ( connection_ != NULL )
-        return true;
-    else
-        return false;
 }
