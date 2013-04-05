@@ -9,105 +9,35 @@
 using namespace std;
 using namespace ecs;
 
-UdpConnection::UdpConnection() : socket_(io_service_)
-{
-    Connect();
-}
-
-void UdpConnection::Connect()
-{
-    try
-    {
-        if ( socket_.is_open() )
-            socket_.close();
-
-        boost::system::error_code error;
-
-        socket_.open(boost::asio::ip::udp::v4());
-
-        socket_.bind(local_point_, error);
-
-        if ( error != 0 )
-        {
-            cout << "UdpConnection::Connect() - error = " << error << endl;
-            exit(1);
-        }
-    }
-    catch (exception& ex)
-    {
-        cout << "UdpConnection::Connect() - error = " << ex.what() << endl;
-        exit(1);
-    }
-}
-
-ByteArray ArrayToVector(const char* array, const int size)
-{
-    if ( size > kMaxBufferSize )
-        return ByteArray();
-
-    ByteArray result;
-
-    for ( int i = 0; i < size; i++ )
-        result.push_back(array[i]);
-
-    return result;
-}
-
 ByteArray UdpConnection::ReceiveData()
 {
-    char buffer[kMaxBufferSize];
-    size_t bytes_transferred;
-
-    try
-    {
-        /* FIXME: Try to use receive() method instead the receive_from() one */
-        if ( socket_.available() != 0 )
-            bytes_transferred = socket_.receive_from(
-                                    boost::asio::buffer(buffer, kMaxBufferSize),
-                                    remote_point_);
-    }
-    catch ( boost::system::system_error error )
-    {
-        cout << "SerialConnection - error = " << error.what() << endl;
-        exit(1);
-    }
-
-    return ArrayToVector(buffer, bytes_transferred);
+    /* FIXME: Implement this method */
 }
 
 void UdpConnection::SendData(const ByteArray& data)
 {
-    if ( data.empty() )
-        return;
-
-    try
-    {
-        socket_.send_to(boost::asio::buffer(data), remote_point_);
-    }
-    catch ( boost::system::system_error error )
-    {
-        cout << "UdpConnection::SendData() - error = " << error.what() << " code = " << error.code() << endl;
-        exit(1);
-    }
+    /* FIXME: Implement this method */
 }
 
 void UdpConnection::Configure(const ProgramOptions& options)
 {
-    SetLocalPoint(options.GetString(kIpLocal),
-                  options.GetInt(kPortLocal));
+    if ( IsInit() )
+        return;
 
-    SetRemotePoint(options.GetString(kIpRemote),
-                   options.GetInt(kPortRemote));
+    string address_local = options.GetString(kIpLocal);
+    int port_local = options.GetInt(kPortLocal);
+
+    string address_remote = options.GetString(kIpRemote);
+    int port_remote = options.GetInt(kPortRemote);
+
+    connection_ = new UdpConnectionImpl(address_local, port_local,
+                                        address_remote, port_remote);
 }
 
-void UdpConnection::SetLocalPoint(const string address, const int port)
+bool UdpConnection::IsInit() const
 {
-    boost::asio::ip::address ip_address = boost::asio::ip::address::from_string(address);
-    local_point_ = boost::asio::ip::udp::endpoint(ip_address, port);
-}
-
-void UdpConnection::SetRemotePoint(const string address, const int port)
-{
-    boost::asio::ip::address ip_address = boost::asio::ip::address::from_string(address);
-    remote_point_ = boost::asio::ip::udp::endpoint(ip_address, port);
+    if ( connection_ != NULL )
+        return true;
+    else
+        return false;
 }

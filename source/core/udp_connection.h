@@ -5,6 +5,7 @@
 #include <boost/asio.hpp>
 
 #include "connection.h"
+#include "udp_connection_impl.h"
 #include "types_ecs.h"
 
 namespace ecs
@@ -13,7 +14,7 @@ namespace ecs
 class UdpConnection : public Connection
 {
 public:
-    UdpConnection();
+    UdpConnection() : connection_(NULL) {};
     virtual ~UdpConnection() {};
 
     virtual ByteArray ReceiveData();
@@ -21,14 +22,10 @@ public:
     virtual void Configure(const ProgramOptions& options);
 
 private:
-    boost::asio::io_service io_service_;
-    boost::asio::ip::udp::socket socket_;
-    boost::asio::ip::udp::endpoint remote_point_;
-    boost::asio::ip::udp::endpoint local_point_;
+    UdpConnectionImpl* connection_;
 
-    void Connect();
-    void SetLocalPoint(const std::string address, const int port);
-    void SetRemotePoint(const std::string address, const int port);
+    /* FIXME: Move this method to parent class */
+    bool IsInit() const;
 
     DISALLOW_COPY_AND_ASSIGN(UdpConnection)
 };
