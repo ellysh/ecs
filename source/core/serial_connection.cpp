@@ -28,7 +28,7 @@ void* ReceiveDataLoop(void* args)
 
 ByteArray SerialConnection::ReceiveData()
 {
-    if ( ! IsConnected() )
+    if ( ! IsInit() )
         return ByteArray();
 
     pthread_t thread = CreateThread(ReceiveDataLoop, reinterpret_cast<void*>(connection_));
@@ -52,7 +52,7 @@ ByteArray SerialConnection::ReceiveData()
 
 void SerialConnection::SendData(const ByteArray& data)
 {
-    if ( ! IsConnected() )
+    if ( ! IsInit() )
         return;
 
     connection_->SendData(data);
@@ -60,7 +60,7 @@ void SerialConnection::SendData(const ByteArray& data)
 
 void SerialConnection::Configure(const ProgramOptions& options)
 {
-    if ( IsConnected() )
+    if ( IsInit() )
         return;
 
     string dev_file = options.GetString(kDevFile);
@@ -71,7 +71,7 @@ void SerialConnection::Configure(const ProgramOptions& options)
     timeout_ = options.GetInt(kTimeout);
 }
 
-bool SerialConnection::IsConnected() const
+bool SerialConnection::IsInit() const
 {
     if ( connection_ != NULL )
         return true;

@@ -23,7 +23,7 @@ private:
     serial::SerialConnection* connection_;
     long timeout_;
 
-    bool IsConnected() const;
+    bool IsInit() const;
 
     DISALLOW_COPY_AND_ASSIGN(SerialConnection)
 };

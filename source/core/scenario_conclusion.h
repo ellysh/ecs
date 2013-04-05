@@ -9,7 +9,6 @@ class ScenarioConclusion
 public:
     static void ExitSuccess();
     static void ExitFail();
-    static void Exit();
 };
 
 }

@@ -17,8 +17,3 @@ void ScenarioConclusion::ExitFail()
     cout << "conclusion - FAILURE" << endl;
     exit(1);
 }
-
-void ScenarioConclusion::Exit()
-{
-    exit(1);
-}
