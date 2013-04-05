@@ -14,6 +14,14 @@ ConnectionImpl::ConnectionImpl(UdpConnectionImpl* connection) : serial_connectio
     udp_connection_ = connection;
 }
 
+ConnectionImpl::~ConnectionImpl()
+{
+    if ( serial_connection_ != NULL )
+        delete serial_connection_;
+    else if ( udp_connection_ != NULL )
+        delete udp_connection_;
+}
+
 void ConnectionImpl::SendData(const ByteArray& data)
 {
     if ( serial_connection_ != NULL )

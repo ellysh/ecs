@@ -17,6 +17,7 @@ class ConnectionImpl
 public:
     ConnectionImpl(serial::SerialConnection* connection);
     ConnectionImpl(UdpConnectionImpl* connection);
+    ~ConnectionImpl();
 
     void SendData(const ByteArray& data);
     ByteArray ReceiveData(const size_t size);
