@@ -1,5 +1,7 @@
 #include "virtual_device.h"
 
+#include <assert.h>
+
 #include "program_options.h"
 #include "option_names.h"
 #include "serial_connection.h"
