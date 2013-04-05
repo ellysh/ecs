@@ -1,5 +1,7 @@
 # This is scenario to test A20 step motor controller
 
+[31 47] 2000
+[31 41 00] 12
 [31 47] 12
 [31 71 13 01 F4] 10
 [31 71 12 01 F4] 10
