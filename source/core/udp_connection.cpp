@@ -1,13 +1,15 @@
 #include "udp_connection.h"
 
-#include <iostream>
-#include <boost/bind.hpp>
-
 #include "program_options.h"
 #include "option_names.h"
+#include "thread.h"
+#include "functions.h"
 
 using namespace std;
 using namespace ecs;
+
+static ByteArray gReceiveData;
+static bool gIsReceived = false;
 
 UdpConnection::~UdpConnection()
 {
@@ -15,12 +17,39 @@ UdpConnection::~UdpConnection()
         delete connection_;
 }
 
+static void* ReceiveDataLoop(void* args)
+{
+    /* FIXME: This method is the same as SerialConnection one */
+    UdpConnectionImpl* connection = reinterpret_cast<UdpConnectionImpl*>(args);
+
+    gReceiveData = connection->ReceiveData(kMaxBufferSize);
+
+    gIsReceived = true;
+}
+
 ByteArray UdpConnection::ReceiveData()
 {
+    /* FIXME: This method is the same as SerialConnection one */
     if ( ! IsInit() )
         return ByteArray();
 
-    return connection_->ReceiveData(kMaxBufferSize);
+    pthread_t thread = CreateThread(ReceiveDataLoop, reinterpret_cast<void*>(connection_));
+
+    int error;
+    if ( gIsReceived )
+        error =  CancelThread(thread, timeout_);
+    else
+        error = CancelThread(thread, 0);
+
+    if ( error != 0 )
+    {
+        if ( error == ETIMEDOUT )
+            cout << GetTimeStamp() << "\treceive - TIMEOUT" << endl;
+
+        return ByteArray();
+    }
+
+    return gReceiveData;
 }
 
 void UdpConnection::SendData(const ByteArray& data)
@@ -44,6 +73,8 @@ void UdpConnection::Configure(const ProgramOptions& options)
 
     connection_ = new UdpConnectionImpl(address_local, port_local,
                                         address_remote, port_remote);
+
+    timeout_ = options.GetInt(kTimeout);
 }
 
 bool UdpConnection::IsInit() const

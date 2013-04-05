@@ -23,6 +23,7 @@ public:
 
 private:
     UdpConnectionImpl* connection_;
+    long timeout_;
 
     /* FIXME: Move this method to parent class */
     bool IsInit() const;
