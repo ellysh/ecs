@@ -16,7 +16,7 @@ public:
                       const std::string address_remote, const int port_remote);
 
     void SendData(const ByteArray& data);
-    ByteArray ReceiveData();
+    ByteArray ReceiveData(const size_t size);
 
 private:
     boost::asio::io_service io_service_;

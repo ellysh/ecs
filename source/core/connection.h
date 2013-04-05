@@ -6,6 +6,8 @@
 namespace ecs
 {
 
+static const int kMaxBufferSize = 1024;
+
 class ProgramOptions;
 
 class Connection

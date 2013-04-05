@@ -16,8 +16,6 @@ private: \
 typedef unsigned char Byte;
 typedef std::vector<Byte> ByteArray;
 
-static const int kMaxBufferSize = 1024;
-
 }
 
 #endif

@@ -15,7 +15,7 @@ class UdpConnection : public Connection
 {
 public:
     UdpConnection() : connection_(NULL) {};
-    virtual ~UdpConnection() {};
+    virtual ~UdpConnection();
 
     virtual ByteArray ReceiveData();
     virtual void SendData(const ByteArray& data);

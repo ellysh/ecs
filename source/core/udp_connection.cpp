@@ -9,14 +9,26 @@
 using namespace std;
 using namespace ecs;
 
+UdpConnection::~UdpConnection()
+{
+    if (  IsInit() )
+        delete connection_;
+}
+
 ByteArray UdpConnection::ReceiveData()
 {
-    /* FIXME: Implement this method */
+    if ( ! IsInit() )
+        return ByteArray();
+
+    return connection_->ReceiveData(kMaxBufferSize);
 }
 
 void UdpConnection::SendData(const ByteArray& data)
 {
-    /* FIXME: Implement this method */
+    if ( ! IsInit() )
+        return;
+
+    connection_->SendData(data);
 }
 
 void UdpConnection::Configure(const ProgramOptions& options)

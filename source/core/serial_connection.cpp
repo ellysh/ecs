@@ -13,7 +13,7 @@ static bool gIsReceived = false;
 
 SerialConnection::~SerialConnection()
 {
-    if ( connection_ != NULL )
+    if ( IsInit() )
         delete connection_;
 }
 

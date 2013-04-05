@@ -44,9 +44,6 @@ void UdpConnectionImpl::Connect(const string address, const int port)
 
 static ByteArray ArrayToVector(const char* array, const int size)
 {
-    if ( size > kMaxBufferSize )
-        return ByteArray();
-
     ByteArray result;
 
     for ( int i = 0; i < size; i++ )
@@ -55,9 +52,9 @@ static ByteArray ArrayToVector(const char* array, const int size)
     return result;
 }
 
-ByteArray UdpConnectionImpl::ReceiveData()
+ByteArray UdpConnectionImpl::ReceiveData(const size_t size)
 {
-    char buffer[kMaxBufferSize];
+    char* buffer = new char[size];
     size_t bytes_transferred;
 
     try
@@ -65,7 +62,7 @@ ByteArray UdpConnectionImpl::ReceiveData()
         /* FIXME: Try to use receive() method instead the receive_from() one */
         if ( socket_.available() != 0 )
             bytes_transferred = socket_.receive_from(
-                                    boost::asio::buffer(buffer, kMaxBufferSize),
+                                    boost::asio::buffer(buffer, size),
                                     remote_point_);
     }
     catch ( boost::system::system_error error )
@@ -74,7 +71,18 @@ ByteArray UdpConnectionImpl::ReceiveData()
         exit(1);
     }
 
-    return ArrayToVector(buffer, bytes_transferred);
+    ByteArray result;
+
+    if ( size < bytes_transferred )
+    {
+        delete[] buffer;
+        return result;
+    }
+
+    result = ArrayToVector(buffer, bytes_transferred);
+
+    delete[] buffer;
+    return result;
 }
 
 void UdpConnectionImpl::SendData(const ByteArray& data)
