@@ -18,32 +18,6 @@ void VirtualDevice::Initialize()
     CreateProtocol();
 }
 
-void VirtualDevice::CreateUdpConnection()
-{
-    string address_local = options_.GetString(kIpLocal);
-    int port_local = options_.GetInt(kPortLocal);
-
-    string address_remote = options_.GetString(kIpRemote);
-    int port_remote = options_.GetInt(kPortRemote);
-
-    UdpConnectionImpl* udp_connection = new UdpConnectionImpl(address_local, port_local,
-                                                              address_remote, port_remote);
-    connection_ = new Connection(new ConnectionImpl(udp_connection));
-
-    //timeout_ = options.GetInt(kTimeout);
-}
-
-void VirtualDevice::CreateSerialConnection()
-{
-    string dev_file = options_.GetString(kDevFile);
-    int baud_rate = options_.GetInt(kBaudRate);
-
-    serial::SerialConnection* serial_connection = new serial::SerialConnection(dev_file, baud_rate);
-    connection_ = new Connection(new ConnectionImpl(serial_connection));
-
-    //timeout_ = options.GetInt(kTimeout);
-}
-
 void VirtualDevice::CreateConnection()
 {
     string connection_type = options_.GetString(kConnectionType);
@@ -54,4 +28,31 @@ void VirtualDevice::CreateConnection()
         CreateSerialConnection();
 
     assert( connection_ != NULL );
+}
+
+void VirtualDevice::CreateUdpConnection()
+{
+    string address_local = options_.GetString(kIpLocal);
+    int port_local = options_.GetInt(kPortLocal);
+
+    string address_remote = options_.GetString(kIpRemote);
+    int port_remote = options_.GetInt(kPortRemote);
+
+    UdpConnectionImpl* udp_connection = new UdpConnectionImpl(address_local, port_local,
+                                                              address_remote, port_remote);
+
+    long timeout = options_.GetInt(kTimeout);
+
+    connection_ = new Connection(new ConnectionImpl(udp_connection), timeout);
+}
+
+void VirtualDevice::CreateSerialConnection()
+{
+    string dev_file = options_.GetString(kDevFile);
+    int baud_rate = options_.GetInt(kBaudRate);
+
+    serial::SerialConnection* serial_connection = new serial::SerialConnection(dev_file, baud_rate);
+
+    long timeout = options_.GetInt(kTimeout);
+    connection_ = new Connection(new ConnectionImpl(serial_connection), timeout);
 }

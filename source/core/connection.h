@@ -16,7 +16,9 @@ class ConnectionImpl;
 class Connection
 {
 public:
-    Connection(ConnectionImpl* const connection) : connection_(connection) {};
+    Connection(ConnectionImpl* const connection, long timeout = 0) :
+        connection_(connection), timeout_(timeout) {};
+
     virtual ~Connection();
 
     ByteArray ReceiveData();
