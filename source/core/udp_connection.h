@@ -13,8 +13,7 @@ namespace ecs
 class UdpConnection : public Connection
 {
 public:
-    UdpConnection() :
-        socket_(io_service_), is_connected_(false) {};
+    UdpConnection();
     virtual ~UdpConnection() {};
 
     virtual ByteArray ReceiveData();
@@ -26,8 +25,6 @@ private:
     boost::asio::ip::udp::socket socket_;
     boost::asio::ip::udp::endpoint remote_point_;
     boost::asio::ip::udp::endpoint local_point_;
-
-    bool is_connected_;
 
     void Connect();
     void SetLocalPoint(const std::string address, const int port);

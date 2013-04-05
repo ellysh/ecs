@@ -1,20 +1,22 @@
-#include "udp_connection.h"
+#include "udp_connection_impl.h"
 
 #include <iostream>
 #include <boost/bind.hpp>
 
-#include "program_options.h"
-#include "option_names.h"
-
 using namespace std;
 using namespace ecs;
 
-UdpConnection::UdpConnection() : socket_(io_service_)
+namespace ip = boost::asio::ip;
+
+UdpConnectionImpl::UdpConnectionImpl(const string address_local, const int port_local,
+                                     const string address_remote, const int port_remote) : socket_(io_service_)
 {
-    Connect();
+    Connect(address_local, port_local);
+
+    remote_point_ = GetEndPoint(address_remote, port_remote);
 }
 
-void UdpConnection::Connect()
+void UdpConnectionImpl::Connect(const string address, const int port)
 {
     try
     {
@@ -23,24 +25,24 @@ void UdpConnection::Connect()
 
         boost::system::error_code error;
 
-        socket_.open(boost::asio::ip::udp::v4());
+        socket_.open(ip::udp::v4());
 
-        socket_.bind(local_point_, error);
+        socket_.bind(GetEndPoint(address, port), error);
 
         if ( error != 0 )
         {
-            cout << "UdpConnection::Connect() - error = " << error << endl;
+            cout << "UdpConnectionImpl::Connect() - error = " << error << endl;
             exit(1);
         }
     }
     catch (exception& ex)
     {
-        cout << "UdpConnection::Connect() - error = " << ex.what() << endl;
+        cout << "UdpConnectionImpl::Connect() - error = " << ex.what() << endl;
         exit(1);
     }
 }
 
-ByteArray ArrayToVector(const char* array, const int size)
+static ByteArray ArrayToVector(const char* array, const int size)
 {
     if ( size > kMaxBufferSize )
         return ByteArray();
@@ -53,7 +55,7 @@ ByteArray ArrayToVector(const char* array, const int size)
     return result;
 }
 
-ByteArray UdpConnection::ReceiveData()
+ByteArray UdpConnectionImpl::ReceiveData()
 {
     char buffer[kMaxBufferSize];
     size_t bytes_transferred;
@@ -75,7 +77,7 @@ ByteArray UdpConnection::ReceiveData()
     return ArrayToVector(buffer, bytes_transferred);
 }
 
-void UdpConnection::SendData(const ByteArray& data)
+void UdpConnectionImpl::SendData(const ByteArray& data)
 {
     if ( data.empty() )
         return;
@@ -91,23 +93,8 @@ void UdpConnection::SendData(const ByteArray& data)
     }
 }
 
-void UdpConnection::Configure(const ProgramOptions& options)
+ip::udp::endpoint UdpConnectionImpl::GetEndPoint(const string address, const int port)
 {
-    SetLocalPoint(options.GetString(kIpLocal),
-                  options.GetInt(kPortLocal));
-
-    SetRemotePoint(options.GetString(kIpRemote),
-                   options.GetInt(kPortRemote));
-}
-
-void UdpConnection::SetLocalPoint(const string address, const int port)
-{
-    boost::asio::ip::address ip_address = boost::asio::ip::address::from_string(address);
-    local_point_ = boost::asio::ip::udp::endpoint(ip_address, port);
-}
-
-void UdpConnection::SetRemotePoint(const string address, const int port)
-{
-    boost::asio::ip::address ip_address = boost::asio::ip::address::from_string(address);
-    remote_point_ = boost::asio::ip::udp::endpoint(ip_address, port);
+    ip::address ip_address = ip::address::from_string(address);
+    return ip::udp::endpoint(ip_address, port);
 }

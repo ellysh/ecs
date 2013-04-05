@@ -9,6 +9,7 @@ set(core_LIB_SRCS
     scenario_parser.cpp
     serial_connection.cpp
     udp_connection.cpp
+    udp_connection_impl.cpp
     virtual_device.cpp)
 
 add_library(core SHARED ${core_LIB_SRCS})
