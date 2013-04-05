@@ -2,9 +2,6 @@
 #define VD_SERIAL_CONNECTION_H
 
 #include "connection.h"
-#include "types_ecs.h"
-
-#include <libserial/serial_connection.h>
 
 namespace ecs
 {
@@ -12,20 +9,9 @@ namespace ecs
 class SerialConnection : public Connection
 {
 public:
-    SerialConnection() : connection_(NULL) {};
-    virtual ~SerialConnection();
+    virtual ~SerialConnection() {};
 
-    virtual ByteArray ReceiveData();
-    virtual void SendData(const ByteArray& data);
     virtual void Configure(const ProgramOptions& options);
-
-private:
-    serial::SerialConnection* connection_;
-    long timeout_;
-
-    bool IsInit() const;
-
-    DISALLOW_COPY_AND_ASSIGN(SerialConnection)
 };
 
 }

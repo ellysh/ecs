@@ -1,6 +1,8 @@
 #ifndef CONNECTION_H
 #define CONNECTION_H
 
+#include <cstdlib>
+
 #include "types_ecs.h"
 
 namespace ecs
@@ -14,11 +16,11 @@ class ConnectionImpl;
 class Connection
 {
 public:
-    Connection() {};
-    virtual ~Connection() {};
+    Connection() : connection_(NULL) {};
+    virtual ~Connection();
 
-    virtual ByteArray ReceiveData() = 0;
-    virtual void SendData(const ByteArray& data) = 0;
+    ByteArray ReceiveData();
+    void SendData(const ByteArray& data);
     virtual void Configure(const ProgramOptions& options) = 0;
 
 protected:
