@@ -1,4 +1,4 @@
-ECS 1.2 version
+ECS 1.3 version
 ===============
 
 INTRODUCTION
