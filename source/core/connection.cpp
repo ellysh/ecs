@@ -1,5 +1,7 @@
 #include "connection.h"
 
+#include <iostream>
+
 #include "connection_impl.h"
 #include "thread.h"
 #include "functions.h"
